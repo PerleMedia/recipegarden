@@ -574,6 +574,7 @@ header#header .site-container #site-navigation #menu-toggle {
 	background: transparent;
 	height: 30px;
 	border: none;
+	padding-right: 0;
 	/* Circle Grow Effect */
 }
 

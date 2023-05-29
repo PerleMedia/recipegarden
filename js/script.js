@@ -96,7 +96,7 @@ jQuery(document).ready(function($) {
     headerHeight = $('#header').height();
     console.log('footer= ' + footerHeight);
     console.log('header= ' + headerHeight);
-    contentSpace.css('margin-bottom', footerHeight);
+    // contentSpace.css('margin-bottom', footerHeight);
   }
   window.addEventListener('resize', getHeightsOnResize);
 
