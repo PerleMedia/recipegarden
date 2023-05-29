@@ -5,6 +5,9 @@ $query_retina: 1400px;
 
 $container_max_width:1600px;
 
+$navigation_height_mobile:30px;
+$header_height_mobile:calc(#{$navigation_height_mobile} + #{$nagivation_padding_mobile} * 2);
+
 $column_gap:3%;
 
 $columns: (

@@ -9,7 +9,7 @@ get_header();
 	<main id="content" class="site-main front-page">
 		<div class="site-container">
 
-		
+		Filter:
 		<div class="wrapper row cols-3">
 
 			<?php

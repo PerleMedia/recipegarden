@@ -7,7 +7,7 @@ get_header();
 ?>
 
 	<main id="content" class="site-main single-recipe">
-		<div class="site-container">
+		
 		<?php
 		while ( have_posts() ) :
 			the_post();
@@ -135,162 +135,173 @@ get_header();
 				<div class="recipe-card">
 
 					<div class="card-header">
-						<h1><?php echo $title?></h1>
+						
 
 						<div class="image-wrapper">
 							<?php echo $image?>
 						</div><!-- .image-wrapper -->
 						
-						<div class="card-meta row cols-1">
+						<div class="title-wrapper">
+							<h1><?php echo $title?></h1>
+							<div class="card-meta row cols-2">
 							
-							<div class="col">
-								<?php if (count($cuisineAr) > 0){
-									?>
-										<strong>Cuisines:</strong>
-										<span>
-											<?php 
-												echo implode(", ", $cuisineAr)
-											?>
-										</span>
-									<?php
-								}?>
-							</div>
-							<div class="col">
-								<?php if (count($courseAr) > 0){
-									?>
-										<strong>Courses:</strong>
-										<span>
-											<?php 
-												echo implode(", ", $courseAr)
-											?>
-										</span>
-									<?php
-								}?>
-							</div>
-							<div class="col">
-								<?php if (count($dietAr) > 0){
-									?>
-										<strong>Diets:</strong>
-										<span>
-											<?php 
-												echo implode(", ", $dietAr)
-											?>
-										</span>
-									<?php
-								}?>
-							</div>
-							<div class="col">
+								<div class="calories">
+									<?php echo $calories?>
+								</div>
+								<div class="time">
+									<?php echo $cooking_time?> mins
+								</div>
 								
-								<?php if (count($tagAr) > 0){
-									?>
-										<strong>Tags:</strong>
-										<span>
-											<?php 
-												echo implode(", ", $tagAr)
-											?>
-										</span>
-									<?php
-								}?>
-							</div>
 						
-						</div><!-- .card-meta -->
+							</div><!-- .card-meta -->
+						</div><!-- .title-wrapper -->
 
-						<div class="card-meta row cols-2">
-							
-							<div class="time">
-								Time to cook:
-								<?php echo $cooking_time?> mins
-							</div>
-							<div class="calories">
-								Calories per serving:
-								<?php echo $calories?>
-							</div>
 						
-						</div><!-- .card-meta -->
 						
 					</div><!-- .card-header -->
 					
 
+					
+
 					<div class="card-body">
-						<div class="card-ingredients">
-							<div class="servings">
-								Serving size: <input id="serving-size" type="number" value="<?php echo $serving_size?>">
-							</div>
+						<div class="site-container">
+							<div class="card-servings row cols-2">
+								<div class="servings">
+									Servings: <input id="serving-size" type="number" value="<?php echo $serving_size?>">
+								</div>
 
-							<button id="add-recipe">Add to mealplan</button>
+								<button id="add-recipe">Add</button>
+							</div><!-- .card-servings -->
 
-							<h2> Ingredients: </h2>
-							
-							<table>
-								<?php 
-									foreach ($ingredientsAr as $ingredient){
-										echo '<tr class="ing-protein">';
-										echo '<td class="ingredient-qty"><span class="ingredient-quantity">' . $ingredient->quantity . '</span> <span class="ingredient-measurement">' . $ingredient->measurement . '</span></td>';
-										echo '<td class="ingredient-name"><span class="ingredient-name">' . $ingredient->ingredient . '</span> </td>';
-										echo '<td class="ingredient-notes"><span class="ingredient-notes">' . $ingredient->note . '</span> </td>';
-										echo '</td>';
-										echo '</tr>';
-									}
-								?>
-							</table>
-
-						</div><!-- .card-ingredients -->
-
-						<div class="card-instructions">
-							<h2> Instructions: </h2>
-
-							<?php if( have_rows('instructions') ): ?>
-
-								<ol>
-
-								<?php while( have_rows('instructions') ) : the_row();
-									$step = get_sub_field('step');?>
+							<div class="card-ingredients">
+								<h2> Ingredients: </h2>
 								
+								<table>
+									<?php 
+										foreach ($ingredientsAr as $ingredient){
+											echo '<tr class="ing-protein">';
+											echo '<td class="ingredient-qty"><span class="ingredient-quantity">' . $ingredient->quantity . '</span> <span class="ingredient-measurement">' . $ingredient->measurement . '</span></td>';
+											echo '<td class="ingredient-name"><span class="ingredient-name">' . $ingredient->ingredient . '</span> </td>';
+											echo '<td class="ingredient-notes"><span class="ingredient-notes">' . $ingredient->note . '</span> </td>';
+											echo '</td>';
+											echo '</tr>';
+										}
+									?>
+								</table>
 
-									<li><?php echo $step?></li>
+							</div><!-- .card-ingredients -->
+
+							<div class="card-instructions">
+								<h2> Instructions: </h2>
+
+								<?php if( have_rows('instructions') ): ?>
+
+									<ol>
+
+									<?php while( have_rows('instructions') ) : the_row();
+										$step = get_sub_field('step');?>
+									
+
+										<li><?php echo $step?></li>
 
 
-								<?php endwhile; ?>	
+									<?php endwhile; ?>	
+									
+									</ol>
+
+								<?php endif; ?>
 								
-								</ol>
+							</div><!-- .card-instructions -->
 
-							<?php endif; ?>
-							
-						</div><!-- .card-instructions -->
+							<div class="card-nutrition">
 
-						<div class="card-nutrition">
-							<h2> Nutrition: </h2>
+								<h2> Details: </h2>
+								
+								<div class="card-meta row cols-1">
+									<div class="col">
+										<?php if (count($cuisineAr) > 0){
+											?>
+												<strong>Cuisines:</strong>
+												<span>
+													<?php 
+														echo implode(", ", $cuisineAr)
+													?>
+												</span>
+											<?php
+										}?>
+									</div>
+									<div class="col">
+										<?php if (count($courseAr) > 0){
+											?>
+												<strong>Courses:</strong>
+												<span>
+													<?php 
+														echo implode(", ", $courseAr)
+													?>
+												</span>
+											<?php
+										}?>
+									</div>
+									<div class="col">
+										<?php if (count($dietAr) > 0){
+											?>
+												<strong>Diets:</strong>
+												<span>
+													<?php 
+														echo implode(", ", $dietAr)
+													?>
+												</span>
+											<?php
+										}?>
+									</div>
+									<div class="col">
+										
+										<?php if (count($tagAr) > 0){
+											?>
+												<strong>Tags:</strong>
+												<span>
+													<?php 
+														echo implode(", ", $tagAr)
+													?>
+												</span>
+											<?php
+										}?>
+									</div>
+								
+								</div><!-- .card-meta -->
 
-							<div class="nutrition-table row cols-3">
-								<div class="fat">
-									Fat:
-									<?php echo $fat?>g
-								</div>
-								<div class="saturates">
-									Saturates:
-									<?php echo $saturates?>g
-								</div>
-								<div class="sugar">
-									Sugars:
-									<?php echo $sugar?>g
-								</div>
-								<div class="protein">
-									Protein:
-									<?php echo $protein?>g
-								</div>
-								<div class="carbs">
-									Carbs:
-									<?php echo $carbs?>g
-								</div>
-								<div class="fiber">
-									Fiber:
-									<?php echo $fiber?>g
-								</div>
-							</div><!-- .nutrition-table -->
-							
-						</div><!-- .card-nutrition -->
+								<div class="nutrition-table row cols-3">
+									<div class="fat">
+										Fat:
+										<?php echo $fat?>g
+									</div>
+									<div class="saturates">
+										Saturates:
+										<?php echo $saturates?>g
+									</div>
+									<div class="sugar">
+										Sugars:
+										<?php echo $sugar?>g
+									</div>
+									<div class="protein">
+										Protein:
+										<?php echo $protein?>g
+									</div>
+									<div class="carbs">
+										Carbs:
+										<?php echo $carbs?>g
+									</div>
+									<div class="fiber">
+										Fiber:
+										<?php echo $fiber?>g
+									</div>
+								</div><!-- .nutrition-table -->
+								
+							</div><!-- .card-nutrition -->
 
+						</div><!-- .site-container -->
 					</div><!-- .card-body -->
+			
 	
 				</div><!-- .recipe-card -->
 			</article>
@@ -300,7 +311,7 @@ get_header();
 		<? endwhile; // End of the loop.
 		?>
 		
-		</div><!-- .site-container -->
+		
 	</main><!-- #main -->
 
 	<script>

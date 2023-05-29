@@ -4,6 +4,8 @@
 
 .row{
     box-sizing: border-box;
+    display:flex;
+    flex-wrap: wrap;
     &.cols-1 > *,
     &.cols-2 > *,
     &.cols-3 > *,

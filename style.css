@@ -1,5 +1,5 @@
 /*!
-Theme Name: RecipeGarden
+Theme Name: PerleMedia
 Theme URI: https://underscores.me/
 Author: PerleMedia
 Author URI: https://perlemedia.com/
@@ -383,6 +383,11 @@ h5,
 .row {
 	-webkit-box-sizing: border-box;
 	        box-sizing: border-box;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-wrap: wrap;
+	    flex-wrap: wrap;
 }
 
 .row.cols-1 > *,
@@ -487,7 +492,7 @@ header#header .site-container #site-branding .custom-logo-link {
 }
 
 header#header .site-container #site-branding .custom-logo-link img {
-	width: 300px;
+	width: 200px;
 	height: auto;
 }
 
@@ -858,6 +863,62 @@ header#header .site-container #site-navigation #menu-toggle::before {
 	z-index: 3;
 	left: 0;
 	top: 30%;
+}
+
+/**
+ * Front Page
+ */
+#content.single-recipe .recipe-card .card-header {
+	position: relative;
+	height: calc(80vh - calc(30px + 20px * 2));
+	margin-bottom: 25%;
+}
+
+#content.single-recipe .recipe-card .card-header .image-wrapper {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+}
+
+#content.single-recipe .recipe-card .card-header .image-wrapper img {
+	-o-object-fit: cover;
+	   object-fit: cover;
+	width: 100%;
+	height: 100%;
+}
+
+#content.single-recipe .recipe-card .card-header .title-wrapper {
+	position: absolute;
+	bottom: 0;
+	z-index: 2;
+	background-color: #fff;
+	margin: 0 20px;
+	border-radius: 15px;
+	margin-bottom: -25%;
+	text-align: center;
+	padding: 10px 0;
+}
+
+#content.single-recipe .recipe-card .card-header .title-wrapper h1 {
+	line-height: 1.5em;
+}
+
+#content.single-recipe .recipe-card .card-header .title-wrapper .card-meta {
+	-ms-flex-wrap: nowrap;
+	    flex-wrap: nowrap;
+}
+
+#content.single-recipe .recipe-card .card-body .card-servings {
+	padding: 10px 0;
+	-ms-flex-wrap: nowrap;
+	    flex-wrap: nowrap;
+}
+
+#content.single-recipe .recipe-card .card-body .card-servings #add-recipe {
+	width: 50px;
+	height: 30px;
 }
 
 /*# sourceMappingURL=../recipegarden/sass/maps/style.css.map */
