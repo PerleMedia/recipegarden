@@ -927,19 +927,25 @@ header#header .site-container #site-navigation #menu-toggle::before {
 	padding: 10px 0;
 	-ms-flex-wrap: nowrap;
 	    flex-wrap: nowrap;
+	-webkit-box-pack: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
 }
 
 #content.single-recipe .recipe-card .card-body .card-servings .servings {
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
+	width: calc(100% - 50px);
 	-webkit-column-gap: 5px;
 	   -moz-column-gap: 5px;
 	        column-gap: 5px;
 }
 
 #content.single-recipe .recipe-card .card-body .card-servings .servings #serving-size {
-	width: 50%;
+	-webkit-box-flex: 1;
+	    -ms-flex: 1;
+	        flex: 1;
 	margin-right: 20px;
 }
 
