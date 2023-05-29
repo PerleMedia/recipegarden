@@ -939,9 +939,7 @@ header#header .site-container #site-navigation #menu-toggle::before {
 }
 
 #content.single-recipe .recipe-card .card-body .card-servings .servings #serving-size {
-	-webkit-box-flex: 1;
-	    -ms-flex: 1;
-	        flex: 1;
+	width: 50%;
 	margin-right: 20px;
 }
 
