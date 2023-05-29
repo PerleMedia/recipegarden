@@ -24,6 +24,7 @@ get_header();
                 $recipeListIds = explode(",", $recipeListIds);
 
                 $recipeListObjs = [];
+                
                 foreach ($recipeListIds as $recipe){
                     if ($recipe != 0){
                         $recipeObj = get_post( $recipe );
@@ -31,6 +32,8 @@ get_header();
                     }
                     
                 }
+
+                // var_dump($recipeListObjs);
 
                 class Ingredient {
                     // Properties
@@ -76,15 +79,15 @@ get_header();
                 $recipeIngArr = [];
                 foreach ($recipeListObjs as $recipeObj){
                     $ingredientData = get_field('ingredients', $recipeObj->ID);
-                    $defaultServings = (double)get_field('serving_size', $recipeObj->ID);
-                    // $plannedServings = array_count_values_of($recipeObj->ID, $recipeListIds);
+                    $defaultServings = (int)get_field('serving_size', $recipeObj->ID);
                     $servingMultiplier = 1 / $defaultServings;
 
-                    // var_dump($plannedServings); 
+
                     // var_dump($defaultServings);
                     // var_dump($servingMultiplier);
                     // var_dump($recipeObj->ID);
 
+                    
                     for ($i = 0; $i < count($ingredientData); $i++){                        
                         
                         $newIng = new Ingredient();
@@ -120,20 +123,58 @@ get_header();
                         $newIng->set_parent_id($parentId);
 
                         // var_dump($newIng->id);
-                        $existingIndex = 0;
 
-                        for ($j = 0; $j < count($recipeIngArr) + 1; $j++){
-                            if ($recipeIngArr[$j]->id == $newIng->id && $recipeIngArr[$j]->measurement == $newIng->measurement){
-                                $existingIndex = $j;
-                                $recipeIngArr[$j]->quantity += $newIng->quantity;
-                                // var_dump($recipeIngArr[$j]);
-                                break;
-                            } 
+                        // if (count($recipeIngArr) == 0){
+                        //     array_push($recipeIngArr, $newIng);
+                        //     var_dump('yaaaas!!!');
+                        //     var_dump($recipeIngArr);
+                        // }
+
+                        $existingIndex = -1;
+
+                        for ($j = 0; $j < count($recipeIngArr); $j++){
+                            if ($recipeIngArr[$j]->id == $newIng->id){
+                                if ($recipeIngArr[$j]->measurement == $newIng->measurement){
+                                    $existingIndex = $j;
+                                    $recipeIngArr[$j]->quantity += $newIng->quantity;
+                                    break;
+                                }
+                            }
+                        }
+                    
+                        // var_dump($existingIndex);
+
+                        if ($existingIndex < 0){
+                            array_push($recipeIngArr, $newIng);
                         }
 
-                        if (!$existingIndex) {
-                            array_push($recipeIngArr, $newIng);
-                        } 
+                        // var_dump($newIng->quantity);
+                        // var_dump($newIng->name);
+                        // var_dump(array_search(166, $recipeIngArr));
+                        // var_dump('new array:');
+                        // var_dump($recipeIngArr);
+                        // var_dump($newIng->id);
+                        
+                        // var_dump($newIng);
+
+                        
+                        // for ($j = 0; $j < count($recipeIngArr) + 1; $j++){
+                        //     var_dump($j);
+                        //     var_dump($recipeIngArr[$j]);
+
+                        //     var_dump($recipeIngArr);
+
+                        //     if ($recipeIngArr[$j]->id == $newIng->id && $recipeIngArr[$j]->measurement == $newIng->measurement){
+                        //         $existingIndex = $j;
+                        //         $recipeIngArr[$j]->quantity += $newIng->quantity;
+                        //         // var_dump($recipeIngArr[$j]);
+                        //         break;
+                        //     } 
+                        // }
+
+                        // if (!$existingIndex) {
+                        //     array_push($recipeIngArr, $newIng);
+                        // } 
                         
                         // var_dump($newIng);
 
