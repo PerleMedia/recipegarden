@@ -132,7 +132,7 @@ get_header();
         for (let i = 0; i < recipeListObjs.length; i++){
             let newDiv = document.createElement("div");
             newDiv.classList.add('recipe-card');
-            newDiv.setAttribute('id', recipeListObjs[i].ID);
+            newDiv.setAttribute('id', `${recipeListObjs[i].ID}-${i}`);
             newDiv.setAttribute('draggable', 'true');
             newDiv.setAttribute('ondragstart', 'drag(event)');
             let codeBlock = '<h4>' + recipeListObjs[i].post_title + '</h4>' +
