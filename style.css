@@ -1,5 +1,5 @@
 /*!
-Theme Name: RecipeGarden
+Theme Name: PerleMedia
 Theme URI: https://underscores.me/
 Author: PerleMedia
 Author URI: https://perlemedia.com/
@@ -533,6 +533,7 @@ header#header .site-container #site-navigation .menu-main-navigation-container u
 header#header .site-container #site-navigation .menu-main-navigation-container ul#primary-menu li a {
 	text-decoration: none;
 	color: #4b484f;
+	text-transform: uppercase;
 }
 
 header#header .site-container #site-navigation .menu-main-navigation-container ul#primary-menu li a:hover {
@@ -859,4 +860,4 @@ header#header .site-container #site-navigation #menu-toggle::before {
 	top: 30%;
 }
 
-/*# sourceMappingURL=../perlemedia/sass/maps/style.css.map */
+/*# sourceMappingURL=../recipegarden/sass/maps/style.css.map */

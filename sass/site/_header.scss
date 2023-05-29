@@ -51,6 +51,7 @@ header#header{
                         a{
                             text-decoration: none;
                             color:$header_primary;
+                            text-transform: uppercase;
                             &:hover{
                                 color:$header_highlight;
                             }
