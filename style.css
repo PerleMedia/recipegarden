@@ -899,7 +899,6 @@ header#header .site-container #site-navigation #menu-toggle::before {
 #content.single-recipe .recipe-card .card-header .title-wrapper {
 	position: absolute;
 	bottom: 0;
-	width: 100%;
 	z-index: 2;
 	background-color: #fff;
 	margin: 0 20px;

@@ -23,7 +23,6 @@
             .title-wrapper{
                 position: absolute;
                 bottom: 0;
-                width: 100%;
                 z-index: 2;
                 background-color: #fff;
                 margin: 0 $container_padding;
@@ -50,7 +49,7 @@
                     column-gap:$half_padding;
                     #serving-size{
                         flex:1;
-                        margin-right:$container_padding;
+                        margin-right: $container_padding;
                     }
                 }
                 #add-recipe{
