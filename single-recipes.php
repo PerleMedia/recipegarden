@@ -165,11 +165,9 @@ get_header();
 
 					<div class="card-body">
 						<div class="site-container">
-							<div class="card-servings row cols-2">
-								<div class="servings">
-									<span>Servings:</span> <input id="serving-size" type="number" value="<?php echo $serving_size?>">
-								</div>
-
+							<div class="card-servings row">
+								<span>Servings:</span> 
+								<input id="serving-size" type="number" value="<?php echo $serving_size?>">
 								<button id="add-recipe">Add</button>
 							</div><!-- .card-servings -->
 

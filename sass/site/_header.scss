@@ -28,6 +28,7 @@ header#header{
             }
         }
         #site-navigation{
+            z-index: 9;
             margin-left:auto;
             .menu-main-navigation-container{
                 display:none;

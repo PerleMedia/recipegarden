@@ -45,14 +45,10 @@
                 padding:$standard_padding 0;
                 flex-wrap: nowrap;
                 justify-content: center;
-                .servings{
-                    display:flex;
-                    width: calc(100% - 50px);
-                    column-gap:$half_padding;
-                    #serving-size{
-                        flex:1;
-                        margin-right: $container_padding;
-                    }
+                column-gap:$half_padding;
+                
+                #serving-size{
+                    width:100%;
                 }
                 #add-recipe{
                     width:50px;

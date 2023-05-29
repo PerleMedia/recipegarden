@@ -507,6 +507,7 @@ header#header .site-container #site-branding h1 a {
 }
 
 header#header .site-container #site-navigation {
+	z-index: 9;
 	margin-left: auto;
 }
 
@@ -930,23 +931,13 @@ header#header .site-container #site-navigation #menu-toggle::before {
 	-webkit-box-pack: center;
 	    -ms-flex-pack: center;
 	        justify-content: center;
-}
-
-#content.single-recipe .recipe-card .card-body .card-servings .servings {
-	display: -webkit-box;
-	display: -ms-flexbox;
-	display: flex;
-	width: calc(100% - 50px);
 	-webkit-column-gap: 5px;
 	   -moz-column-gap: 5px;
 	        column-gap: 5px;
 }
 
-#content.single-recipe .recipe-card .card-body .card-servings .servings #serving-size {
-	-webkit-box-flex: 1;
-	    -ms-flex: 1;
-	        flex: 1;
-	margin-right: 20px;
+#content.single-recipe .recipe-card .card-body .card-servings #serving-size {
+	width: 100%;
 }
 
 #content.single-recipe .recipe-card .card-body .card-servings #add-recipe {
