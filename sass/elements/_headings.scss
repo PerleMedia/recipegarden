@@ -1,0 +1,62 @@
+/**
+ * Headings
+ */
+
+h1,
+h2, 
+h3, 
+h4, 
+h5,
+h6{
+    display:block;
+    margin:0 0 $half_padding 0;
+    color:$text_color;
+    line-height:1.8em;
+    font-weight: 100;
+}
+
+h1,
+.banner-heading{
+    font-size:$text_huge;
+    line-height:1.8em;
+}
+
+h2,
+.main-heading{
+    font-size:$text_big;
+    line-height:1.6em;
+}
+
+h3,
+.sub-heading{
+    font-size:$text_highlight;
+    line-height:1.5em;
+}
+
+h4{
+    font-size:$text_standard;
+}
+
+h5,
+.small-text{
+    font-size:$text_small;
+}
+
+
+@media (min-width:$query_tablet){
+
+}
+@media (min-width:$query_laptop){
+    
+}
+@media (min-width:$query_lgscreen){
+
+}
+
+@media (min-width:$query_retina){
+    
+}
+
+@media (min-width:$container_max_width){
+
+}

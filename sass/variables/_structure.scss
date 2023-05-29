@@ -1,0 +1,20 @@
+$query_tablet: 768px;
+$query_laptop: 992px;
+$query_lgscreen: 1200px;
+$query_retina: 1400px;
+
+$container_max_width:1600px;
+
+$column_gap:3%;
+
+$columns: (
+	1: 100%,
+	2: calc(50% - #{$column_gap}),
+	3: calc(33.3% - #{$column_gap}),
+	4: calc(25% - #{$column_gap}),
+	5: calc(20% - #{$column_gap}),
+	6: calc(16.66% - #{$column_gap}),
+	7: calc(14.28% - #{$column_gap}),
+	8: calc(12.5% - #{$column_gap}),
+	9: calc(11.11% - #{$column_gap})
+);

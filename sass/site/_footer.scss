@@ -1,0 +1,51 @@
+/**
+ * Footer
+ */
+
+#footer{
+    position:fixed;
+    box-sizing: border-box;
+    width:100%;
+    bottom: 0;
+    z-index: -1;
+
+    #footer-main{
+        background:$footer_background;
+        height:20vh;
+        display:flex;
+        align-items: center;
+        padding:$double_padding;
+        box-sizing: border-box;
+        color:#fff;
+        width:100%;
+    }
+    #footer-socket{
+        background:$footer_accent;
+        padding:$standard_padding 0;
+        text-align: center;
+        font-size:$text_small;
+        line-height:1.3em;
+        color:rgba(255,255,255,.5);
+        a{
+            color:#fff;
+        }
+    }
+
+@media (min-width:$query_tablet){
+
+}
+@media (min-width:$query_laptop){
+
+}
+@media (min-width:$query_lgscreen){
+
+}
+
+@media (min-width:$query_retina){
+    
+}
+
+@media (min-width:$container_max_width){
+
+}
+}

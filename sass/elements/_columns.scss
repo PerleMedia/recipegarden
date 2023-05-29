@@ -1,0 +1,77 @@
+/**
+ * Columns
+ */
+
+.row{
+    box-sizing: border-box;
+    &.cols-1 > *,
+    &.cols-2 > *,
+    &.cols-3 > *,
+    &.cols-4 > *,
+    &.cols-5 > *,
+    &.cols-6 > *{
+        width:100%;
+    } 
+    
+    &.full-width{
+        width: 100vw;
+        margin-left: -$container_padding;
+    }
+
+    &.no-padding{
+        padding:0;
+    }
+
+@media (min-width:$query_tablet){
+
+}
+@media (min-width:$query_laptop){
+    display:flex;
+    align-items:center;
+    flex-wrap:wrap;
+    padding:$container_padding;
+
+    &.cols-1 > *{
+        width:map-get( $columns, 1 );
+    }
+    &.cols-2 > *{
+        width:map-get( $columns, 2 );
+    }
+    &.cols-3 > *{
+        width:map-get( $columns, 3 );
+    }
+    &.cols-4 > *{
+        width:map-get( $columns, 4 );
+    }
+    &.cols-5 > *{
+        width:map-get( $columns, 5 );
+    }
+    &.cols-6 > *{
+        width:map-get( $columns, 6 );
+    }
+    &.cols-7 > *{
+        width:map-get( $columns, 7 );
+    }
+    &.cols-8 > *{
+        width:map-get( $columns, 8 );
+    }
+    &.cols-9 > *{
+        width:map-get( $columns, 9 );
+    }
+        
+}
+@media (min-width:$query_lgscreen){
+
+}
+
+@media (min-width:$query_retina){
+    
+}
+
+@media (min-width:$container_max_width){
+    &.full-width{
+        margin-left: calc((((-100vw + #{$container_max_width}) / 2) - #{$container_padding}));
+    }   
+}
+}
+

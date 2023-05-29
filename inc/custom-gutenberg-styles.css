@@ -1,0 +1,53 @@
+/**
+ * Hero Block
+ **/
+.hero-block{
+    margin-bottom: 2rem;
+}
+.hero-block .block-wrapper{
+    background-size:cover;
+    background-position:center left;
+}
+
+.hero-block .block-wrapper .overlay{
+    padding: 2rem;
+    background:rgba(0,0,0,.6); 
+    color:#fff;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-block .block-wrapper .overlay.light > *{
+    color:#242529;
+}
+
+.hero-block .block-wrapper .overlay .banner-heading{
+    width:100%;
+}
+
+.hero-block .block-wrapper .overlay p{
+    width:60%;
+    color:rgba(255,255,255,.8);
+    font-size:1.2rem;
+    line-height:1.5rem;
+}
+
+@media screen and (max-width:1200px){
+
+}
+
+@media screen and (max-width:900px){
+    .hero-block .block-wrapper .overlay p{
+        width:80%;
+        color:rgba(255,255,255,.8);
+        font-size:1.2rem;
+        line-height:1.5rem;
+    }
+
+}
+
+@media screen and (max-width:767px) {
+}

@@ -1,0 +1,152 @@
+/**
+ * Front Page
+ */
+#content.front-page{
+    .site-container{
+        .wrapper{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: stretch;
+            column-gap:$column_gap;
+            margin-top: auto;
+            .recipe-card{
+                box-sizing: border-box;
+                display: flex;
+                flex-direction: column;
+                padding: 15px;
+                background-color: white;
+                border-radius: 15px;
+                overflow: hidden;
+                margin-top: 3%;
+                h3{
+                    text-align: center;
+                }
+                .wrapper{
+                    .image-wrapper{
+                        position: relative;
+                        margin-top: auto;
+                        border-radius: 15px;
+                        width: 100%;
+                        padding-top: 66.67%;
+                        height: 0;
+                        cursor: pointer;
+                        overflow: hidden;
+                        img{
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                            opacity: 0.7;
+                            transition: all 0.4s ease-in-out;
+                        }
+                        .meta{
+                            position: absolute;
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            bottom: 0;
+                            width: 100%;
+                            padding: 30px 15px 15px;
+                            font-weight: bold;
+                            background: linear-gradient(180deg, rgba(29, 29, 29, 0) 0%, rgba(29, 29, 29, 0.8) 100%);
+                            .calories{
+                                position: relative;
+                                display: flex;
+                                align-items: center;
+                                span{
+                                    padding-top: 5px;
+                                    color: white;
+                                }
+                            }
+                        }
+                    }
+                }
+                &:hover{
+                    .wrapper{
+                        .image-wrapper{
+                            img{
+                                width: 110%;
+                                height: 110%;
+                                top: -5%;
+                                left: -5%;
+                                opacity: 1;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .cluster{
+        position:relative; 
+        width:100%; 
+        max-width:874px; 
+        height:100vh; 
+        margin:50px auto; 
+        background-color:transparent; 
+        padding-bottom:100px;
+
+        .circle{
+            position:absolute;
+            width:260px; 
+            max-width:100%; 
+            height:260px; 
+            border-radius:50%; 
+            background-color:$primary_color; 
+            left:0; 
+            bottom:15%;
+            z-index:1;
+            @media (min-width: $query_tablet){
+                left:214px;
+            }
+        }
+
+        .owlHorned{
+            position:absolute;
+            width:450px; 
+            max-width:100%; 
+            height:550px; 
+            border-radius:4px; 
+            background-color:$secondary_color; 
+            left:0; 
+            top:150px;
+            z-index:2;
+            @media (min-width: $query_tablet){
+                left:390px;
+            }
+        }
+    
+        .dotsBlue{
+            position:absolute;
+            width:100%; 
+            height:30%; 
+            max-width:494px; 
+            max-height:434px; 
+            background:$highlight_color;
+            z-index:3; 
+            left:0; 
+            top:30%;}
+    }
+    
+@media (min-width:$query_tablet){
+
+}
+@media (min-width:$query_laptop){
+    
+}
+@media (min-width:$query_lgscreen){
+
+}
+
+@media (min-width:$query_retina){
+    
+}
+
+@media (min-width:$container_max_width){
+
+}
+}
+
