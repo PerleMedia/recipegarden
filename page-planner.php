@@ -26,7 +26,7 @@ get_header();
                         <div id="day1" class="meal-card">
                             <div id="total-calories">
                                 <span class="day">Sunday</span>
-                                <section>Calories: <div id="caloric-sum-1"></div></section>
+                                <!-- <section>Calories: <div id="caloric-sum-1"></div></section> -->
                                 <!-- <section>Fat: <div id="fat-sum-1"></div></section>
                                 <section>Protein: <div id="protein-sum-1"></div></section> -->
                             </div>
@@ -40,7 +40,7 @@ get_header();
                         <div id="day2" class="meal-card">
                             <div id="total-calories">
                                 <span class="day">Monday</span>
-                                <section>Calories: <div id="caloric-sum-2"></div></section>
+                                <!-- <section>Calories: <div id="caloric-sum-2"></div></section> -->
                                 <!-- <section>Fat: <div id="fat-sum-2"></div></section>
                                 <section>Protein: <div id="protein-sum-2"></div></section> -->
                             </div>
@@ -54,7 +54,7 @@ get_header();
                         <div id="day3" class="meal-card">
                             <div id="total-calories">
                                 <span class="day">Tuesday</span>
-                                <section>Calories: <div id="caloric-sum-3"></div></section>
+                                <!-- <section>Calories: <div id="caloric-sum-3"></div></section> -->
                                 <!-- <section>Fat: <div id="fat-sum-3"></div></section>
                                 <section>Protein: <div id="protein-sum-3"></div></section> -->
                             </div>
@@ -62,7 +62,58 @@ get_header();
                             </div>
                             <div id="dinner" ondrop="drop(event)" ondragover="allowDrop(event)">
                             </div>
-                            
+                        </div>
+
+                        <div id="day4" class="meal-card">
+                            <div id="total-calories">
+                                <span class="day">Wednesday</span>
+                                <!-- <section>Calories: <div id="caloric-sum-3"></div></section> -->
+                                <!-- <section>Fat: <div id="fat-sum-3"></div></section>
+                                <section>Protein: <div id="protein-sum-3"></div></section> -->
+                            </div>
+                            <div id="lunch" ondrop="drop(event)" ondragover="allowDrop(event)">
+                            </div>
+                            <div id="dinner" ondrop="drop(event)" ondragover="allowDrop(event)">
+                            </div>
+                        </div>
+
+                        <div id="day5" class="meal-card">
+                            <div id="total-calories">
+                                <span class="day">Thursday</span>
+                                <!-- <section>Calories: <div id="caloric-sum-3"></div></section> -->
+                                <!-- <section>Fat: <div id="fat-sum-3"></div></section>
+                                <section>Protein: <div id="protein-sum-3"></div></section> -->
+                            </div>
+                            <div id="lunch" ondrop="drop(event)" ondragover="allowDrop(event)">
+                            </div>
+                            <div id="dinner" ondrop="drop(event)" ondragover="allowDrop(event)">
+                            </div>
+                        </div>
+
+                        <div id="day6" class="meal-card">
+                            <div id="total-calories">
+                                <span class="day">Friday</span>
+                                <!-- <section>Calories: <div id="caloric-sum-3"></div></section> -->
+                                <!-- <section>Fat: <div id="fat-sum-3"></div></section>
+                                <section>Protein: <div id="protein-sum-3"></div></section> -->
+                            </div>
+                            <div id="lunch" ondrop="drop(event)" ondragover="allowDrop(event)">
+                            </div>
+                            <div id="dinner" ondrop="drop(event)" ondragover="allowDrop(event)">
+                            </div>
+                        </div>
+
+                        <div id="day7" class="meal-card">
+                            <div id="total-calories">
+                                <span class="day">Saturday</span>
+                                <!-- <section>Calories: <div id="caloric-sum-3"></div></section> -->
+                                <!-- <section>Fat: <div id="fat-sum-3"></div></section>
+                                <section>Protein: <div id="protein-sum-3"></div></section> -->
+                            </div>
+                            <div id="lunch" ondrop="drop(event)" ondragover="allowDrop(event)">
+                            </div>
+                            <div id="dinner" ondrop="drop(event)" ondragover="allowDrop(event)">
+                            </div>
                         </div>
                         
                     </div>            

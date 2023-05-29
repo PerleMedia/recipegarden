@@ -302,8 +302,8 @@ p {
 a {
 	color: #777e5c;
 	text-decoration: none;
-	-webkit-transition: all 0.4s ease-in-out;
-	transition: all 0.4s ease-in-out;
+	-webkit-transition: all 0.4s ease-in;
+	transition: all 0.4s ease-in;
 }
 
 a:hover {
@@ -585,8 +585,8 @@ header#header .site-container #site-navigation #menu-toggle .hamburger::after {
 	width: 30px;
 	position: relative;
 	display: block;
-	-webkit-transition: 0.4s ease-in-out;
-	transition: 0.4s ease-in-out;
+	-webkit-transition: 0.4s ease-in;
+	transition: 0.4s ease-in;
 	background: #4b484f;
 	z-index: 2;
 }
@@ -635,8 +635,8 @@ header#header .site-container #site-navigation #menu-toggle::before {
 	content: '';
 	background: #4b484f;
 	position: absolute;
-	-webkit-transition: 0.4s ease-in-out;
-	transition: 0.4s ease-in-out;
+	-webkit-transition: 0.4s ease-in;
+	transition: 0.4s ease-in;
 	top: 0;
 	z-index: 1;
 	/* Circle Grow Effect */
@@ -728,6 +728,80 @@ header#header .site-container #site-navigation #menu-toggle::before {
 /**
  * Front Page
  */
+#content.front-page .site-container .filter .tool-wrapper {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	-webkit-column-gap: 20px;
+	   -moz-column-gap: 20px;
+	        column-gap: 20px;
+}
+
+#content.front-page .site-container .filter .tool-wrapper form {
+	-ms-flex-wrap: nowrap;
+	    flex-wrap: nowrap;
+	width: 100%;
+	-webkit-column-gap: 15px;
+	   -moz-column-gap: 15px;
+	        column-gap: 15px;
+}
+
+#content.front-page .site-container .filter .tool-wrapper input#search-titles {
+	width: 100%;
+	border: none;
+	padding: 10px;
+	margin-bottom: 10px;
+}
+
+#content.front-page .site-container .filter .tool-wrapper #filter-recipes,
+#content.front-page .site-container .filter .tool-wrapper #search-recipes {
+	padding: 0;
+	background: transparent;
+	margin: 0 auto 10px 0;
+	width: 30px;
+}
+
+#content.front-page .site-container .filter .tool-wrapper #filter-recipes svg,
+#content.front-page .site-container .filter .tool-wrapper #search-recipes svg {
+	width: 100%;
+	height: 25px;
+	fill: #4c484e;
+}
+
+#content.front-page .site-container .filter .tool-wrapper #filter-recipes svg#search-icon,
+#content.front-page .site-container .filter .tool-wrapper #search-recipes svg#search-icon {
+	width: 80%;
+}
+
+#content.front-page .site-container .filter #filter-wrapper {
+	overflow: hidden;
+	max-height: 0;
+	padding: 0 20px;
+	background-color: #221A24;
+	color: #fff;
+	-webkit-transition: 0.4s ease-in;
+	transition: 0.4s ease-in;
+}
+
+#content.front-page .site-container .filter #filter-wrapper.active {
+	max-height: 100vh;
+	padding: 20px;
+	-webkit-transition: 0.4s ease-in;
+	transition: 0.4s ease-in;
+}
+
+#content.front-page .site-container .filter #filter-wrapper .filter label {
+	display: block;
+	padding: 10px 0;
+}
+
+#content.front-page .site-container .filter #filter-wrapper .filter label:not(:last-child) {
+	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
 #content.front-page .site-container .wrapper {
 	display: -webkit-box;
 	display: -ms-flexbox;
@@ -833,64 +907,6 @@ header#header .site-container #site-navigation #menu-toggle::before {
 	opacity: 1;
 }
 
-#content.front-page .cluster {
-	position: relative;
-	width: 100%;
-	max-width: 874px;
-	height: 100vh;
-	margin: 50px auto;
-	background-color: transparent;
-	padding-bottom: 100px;
-}
-
-#content.front-page .cluster .circle {
-	position: absolute;
-	width: 260px;
-	max-width: 100%;
-	height: 260px;
-	border-radius: 50%;
-	background-color: #777e5c;
-	left: 0;
-	bottom: 15%;
-	z-index: 1;
-}
-
-@media (min-width: 768px) {
-	#content.front-page .cluster .circle {
-		left: 214px;
-	}
-}
-
-#content.front-page .cluster .owlHorned {
-	position: absolute;
-	width: 450px;
-	max-width: 100%;
-	height: 550px;
-	border-radius: 4px;
-	background-color: #b0b6bc;
-	left: 0;
-	top: 150px;
-	z-index: 2;
-}
-
-@media (min-width: 768px) {
-	#content.front-page .cluster .owlHorned {
-		left: 390px;
-	}
-}
-
-#content.front-page .cluster .dotsBlue {
-	position: absolute;
-	width: 100%;
-	height: 30%;
-	max-width: 494px;
-	max-height: 434px;
-	background: #d1d8bd;
-	z-index: 3;
-	left: 0;
-	top: 30%;
-}
-
 /**
  * Single Recipes
  */
@@ -932,6 +948,9 @@ header#header .site-container #site-navigation #menu-toggle::before {
 	margin-bottom: -25%;
 	text-align: center;
 	padding: 10px;
+	min-width: calc(100% - (20px * 2));
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
 }
 
 #content.single-recipe .recipe-card .card-header .title-wrapper h1 {

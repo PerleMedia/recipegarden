@@ -3,6 +3,62 @@
  */
 #content.front-page{
     .site-container{
+        .filter{
+            .tool-wrapper{
+                display: flex;
+                align-items: center;
+                column-gap: $container_padding;
+                form{
+                    flex-wrap: nowrap;
+                    width: 100%;
+                    column-gap: 15px;
+                }
+                input#search-titles{
+                    width: 100%;
+                    border: none;
+                    padding: $standard_padding;
+                    margin-bottom: 10px;
+                }
+            
+                #filter-recipes,
+                #search-recipes{
+                    padding: 0;
+                    background: transparent;
+                    margin: 0 auto 10px 0;
+                    width: 30px;
+                    svg{    
+                        width: 100%;
+                        height: 25px;
+                        fill: #4c484e;
+                        &#search-icon{
+                            width: 80%;
+                        }
+                    }
+                }
+            }
+            #filter-wrapper{
+                overflow: hidden;
+                max-height:0;
+                padding: 0 $double_padding;
+                background-color: $accent_color;
+                color:#fff;
+                transition:$transition;
+                &.active{
+                    max-height: 100vh;
+                    padding: $double_padding;
+                    transition:$transition;
+                }
+                .filter{
+                    label{
+                        display: block;
+                        padding: 10px 0;
+                        &:not(:last-child){
+                            border-bottom: 1px solid rgba(255,255,255,.1);
+                        }
+                    }
+                }
+            }
+        }
         .wrapper{
             display: flex;
             flex-wrap: wrap;
@@ -79,56 +135,6 @@
                 }
             }
         }
-    }
-    .cluster{
-        position:relative; 
-        width:100%; 
-        max-width:874px; 
-        height:100vh; 
-        margin:50px auto; 
-        background-color:transparent; 
-        padding-bottom:100px;
-
-        .circle{
-            position:absolute;
-            width:260px; 
-            max-width:100%; 
-            height:260px; 
-            border-radius:50%; 
-            background-color:$primary_color; 
-            left:0; 
-            bottom:15%;
-            z-index:1;
-            @media (min-width: $query_tablet){
-                left:214px;
-            }
-        }
-
-        .owlHorned{
-            position:absolute;
-            width:450px; 
-            max-width:100%; 
-            height:550px; 
-            border-radius:4px; 
-            background-color:$secondary_color; 
-            left:0; 
-            top:150px;
-            z-index:2;
-            @media (min-width: $query_tablet){
-                left:390px;
-            }
-        }
-    
-        .dotsBlue{
-            position:absolute;
-            width:100%; 
-            height:30%; 
-            max-width:494px; 
-            max-height:434px; 
-            background:$highlight_color;
-            z-index:3; 
-            left:0; 
-            top:30%;}
     }
     
 @media (min-width:$query_tablet){

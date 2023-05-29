@@ -444,8 +444,31 @@ function hide_SCSSCompiler() {
   
 add_action('pre_current_active_plugins', 'hide_SCSSCompiler');
 
+/**
+ * Ajax functions for recipe filtering
+ */
+function filter_recipes() {
+	$catSlug = $_POST['search_titles'];
+  
+	$ajaxposts = new WP_Query([
+	  'post_type' => 'recipes',
+	  'posts_per_page' => -1,
+	  'orderby' => 'menu_order', 
+	  'order' => 'desc',
+	]);
 
-function array_count_values_of($value, $array) {
-	$counts = array_count_values($array);
-	return $counts[$value];
-}
+	$response = '';
+  
+	if($ajaxposts->have_posts()) {
+	  while($ajaxposts->have_posts()) : $ajaxposts->the_post();
+		$response .= get_template_part('./template-parts/includes/recipe-grid.php');
+	  endwhile;
+	} else {
+	  $response = 'empty';
+	}
+  
+	echo $response;
+	exit;
+  }
+  add_action('wp_ajax_filter_recipes', 'filter_recipes');
+  add_action('wp_ajax_nopriv_filter_recipes', 'filter_recipes');

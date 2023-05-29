@@ -17,6 +17,18 @@ function menuToggle(){
     }
 }
 
+/**
+ * Create a new Cookie
+ */
+function setCookie(name,value,days) {
+	var expires = "";
+	if (days) {
+		var date = new Date();
+		date.setTime(date.getTime() + (days*24*60*60*1000));
+		expires = "; expires=" + date.toUTCString();
+	}
+	document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+}
 
 /**
  * Drag and Drop -- Drop Initialization
@@ -75,7 +87,6 @@ jQuery(document).ready(function($) {
   let footerHeight = $('#footer').height();
   let headerHeight = $('#header').height();
   
-
   // Footer reveal effect
   let mainContent = $('main#content');
   mainContent.css('margin-bottom', footerHeight);
@@ -88,5 +99,25 @@ jQuery(document).ready(function($) {
     contentSpace.css('margin-bottom', footerHeight);
   }
   window.addEventListener('resize', getHeightsOnResize);
+
+  // Ajax post filters
+  $('#search-titles').on('input', function() { 
+    console.log($(this).val())
+    $(this).val() // get the current value of the input field.
+    
+    // $.ajax({
+    //   type: 'POST',
+    //   url: '/wp-admin/admin-ajax.php',
+    //   dataType: 'html',
+    //   data: {
+    //     action: 'filter_recipes',
+    //     category: $(this).val(),
+    //   },
+    //   success: function(res) {
+    //     $('.project-tiles').html(res);
+    //   }
+    // })
+
+});
 });
 
