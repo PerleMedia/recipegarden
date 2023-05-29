@@ -9,7 +9,7 @@ get_header();
 	<main id="content" class="site-main shopping-list">
 		<div class="site-container">
 
-		    <button id="clear-storage">Clear Storage</button>
+		    <button id="clear-storage">Reset Meal Plan</button>
             <div id="card-wrapper"></div>
 
             <?php

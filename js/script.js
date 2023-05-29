@@ -17,6 +17,39 @@ function menuToggle(){
     }
 }
 
+
+/**
+ * Drag and Drop -- Drop Initialization
+ */
+function allowDrop(ev) {
+  ev.preventDefault();
+}
+
+/**
+ * Drag and Drop -- Drag Initialization
+ */
+function drag(ev) {
+  ev.dataTransfer.setData("text", ev.target.id);
+}
+
+/**
+ * Drag and Drop -- Behavior Configuration
+ */
+function drop(ev) {
+  ev.preventDefault();
+  var data = ev.dataTransfer.getData("text");
+  var node = document.getElementById(data);
+  var clone = node.cloneNode(true);
+  
+  if (ev.target.closest('.clone') !== null){
+      ev.target.appendChild(clone);
+  } else {
+      ev.target.appendChild(node);
+  }
+
+}
+
+
 /* 
  * Get footer height in px
  */
@@ -44,3 +77,4 @@ jQuery(document).ready(function($) {
   }
   window.addEventListener('resize', getHeightsOnResize);
 });
+

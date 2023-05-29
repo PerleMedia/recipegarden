@@ -1,0 +1,6 @@
+/**
+ * Shopping List
+ */
+ #content.shopping-list{
+    min-height:calc(100vh - #{$header_height_mobile});
+ }
