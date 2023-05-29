@@ -1049,6 +1049,8 @@ header#header .site-container #site-navigation #menu-toggle::before {
 	    -ms-flex-direction: column;
 	        flex-direction: column;
 	width: 60%;
+	max-height: calc(100vh - calc(30px + (20px * 2)));
+	overflow: scroll;
 }
 
 #content.page-planner .plan-wrapper #plan-container .meal-card {
