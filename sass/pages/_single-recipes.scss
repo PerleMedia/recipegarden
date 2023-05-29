@@ -5,7 +5,8 @@
     .recipe-card{
         .card-header{
             position: relative;
-            height:calc(80vh - #{$header_height_mobile});
+            width: 100%;
+            height:calc(60vh - #{$header_height_mobile});
             margin-bottom: 25%;
             .image-wrapper{
                 position: absolute;
@@ -22,13 +23,15 @@
             .title-wrapper{
                 position: absolute;
                 bottom: 0;
+                width: 100%;
                 z-index: 2;
                 background-color: #fff;
                 margin: 0 $container_padding;
-                border-radius:$border-radius;
+                border-radius:$border_radius;
+                box-shadow: $box_shadow;
                 margin-bottom: -25%;
                 text-align: center;
-                padding:$standard_padding 0;
+                padding:$standard_padding;
                 h1{
                     line-height: 1.5em;
                 }
@@ -38,14 +41,55 @@
             }
         }
         .card-body{
+            padding:$standard_padding 0;
             .card-servings{
                 padding:$standard_padding 0;
                 flex-wrap: nowrap;
+                .servings{
+                    display:flex;
+                    column-gap:$half_padding;
+                }
                 #add-recipe{
                     width:50px;
                     height: 30px;
                 }
             }
         }
+    }
+
+    @media (min-width:$query_tablet){
+        .recipe-card{
+            .card-header{
+                height: 70vh;
+                margin-bottom:50px;
+                .title-wrapper{
+                    box-sizing: border-box;
+                    margin-bottom: -50px;
+                    width: calc(100% - (#{$container_padding} * 2));
+                }
+            }
+        }
+    }
+    @media (min-width:$query_laptop){
+        .recipe-card{
+            .card-header{
+                .title-wrapper{
+                    width: 60%;
+                    left: 50%;
+                    transform: translateX(-50%);
+                }
+            }
+        }
+    }
+    @media (min-width:$query_lgscreen){
+    
+    }
+    
+    @media (min-width:$query_retina){
+        
+    }
+    
+    @media (min-width:$container_max_width){
+    
     }
  }

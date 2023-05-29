@@ -3,10 +3,10 @@ $query_laptop: 992px;
 $query_lgscreen: 1200px;
 $query_retina: 1400px;
 
-$container_max_width:1600px;
+$container_max_width:1400px;
 
 $navigation_height_mobile:30px;
-$header_height_mobile:calc(#{$navigation_height_mobile} + #{$nagivation_padding_mobile} * 2);
+$header_height_mobile:calc(#{$navigation_height_mobile} + (#{$nagivation_padding_mobile} * 2));
 
 $column_gap:3%;
 

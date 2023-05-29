@@ -152,7 +152,15 @@ header#header{
     }
 
 @media (min-width:$query_tablet){
-
+    .site-container{
+        #site-branding{
+            .custom-logo-link{
+                img{
+                    width: 300px;
+                }
+            }
+        }
+    }
 }
 @media (min-width:$query_laptop){
     .site-container{
