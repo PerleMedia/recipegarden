@@ -9,6 +9,9 @@
             align-items: stretch;
             width:40%;
             min-height: calc(100vh - #{$header_height_mobile});
+            display: flex;
+            flex-direction: column;
+            row-gap: 10px;
             h4{
                 width:90%;
                 margin:0 auto;
@@ -98,6 +101,12 @@
         }
     }
     
+    #clear-storage {
+        display: block;
+        position: relative;
+        margin: 20px 0 0 auto;
+    }
+
     @media (min-width:$query_tablet){
     
     }
@@ -115,4 +124,6 @@
     @media (min-width:$container_max_width){
     
     }
+
+    
 }

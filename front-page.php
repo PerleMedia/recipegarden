@@ -18,9 +18,9 @@ get_header();
 						</button>
 					</form> 
 
-					<button id="filter-recipes" onclick="filterToggle()">
+					<!-- <button id="filter-recipes" onclick="filterToggle()">
 						<svg id="filter-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 444.52 378.56"><defs><style>.cls-1{fill:none;}.cls-2{clip-path:url(#clip-path);}</style><clipPath id="clip-path" transform="translate(12.3)"><rect class="cls-1" x="-0.55" width="419.35" height="378.56"/></clipPath></defs><title>filter-icon</title><g class="cls-2"><path d="M62.18,41.44v22.4H-1.09a11.23,11.23,0,0,1-11.2-11.2,11.23,11.23,0,0,1,11.2-11.2Z" transform="translate(12.3)"/><path d="M432.22,52.64A11.23,11.23,0,0,1,421,63.84H127V41.44H421a11.24,11.24,0,0,1,11.21,11.2Z" transform="translate(12.3)"/><path d="M41.46,0V104.72H146.18V0ZM126,84.56H62.18V20.16h64.4v64.4Z" transform="translate(12.3)"/><path d="M265.46,178.08v22.4H-1.1a11.23,11.23,0,0,1-11.2-11.2,11.23,11.23,0,0,1,11.2-11.2Z" transform="translate(12.3)"/><path d="M431.22,189.28a11.23,11.23,0,0,1-11.2,11.2H329.86v-22.4H420A11.23,11.23,0,0,1,431.22,189.28Z" transform="translate(12.3)"/><path d="M244.74,136.64V241.36H349.46V136.64Zm85.12,84.56h-64.4V156.8h64.4Z" transform="translate(12.3)"/><path d="M62.18,314.72v22.4H-1.09a11.23,11.23,0,0,1-11.2-11.2,11.23,11.23,0,0,1,11.2-11.2Z" transform="translate(12.3)"/><path d="M432.22,325.92a11.23,11.23,0,0,1-11.2,11.2H127v-22.4H421a11.24,11.24,0,0,1,11.21,11.2Z" transform="translate(12.3)"/><path d="M41.46,273.84V378.56H146.18V273.84ZM126,358.4H62.18V294h64.4v64.4Z" transform="translate(12.3)"/></g></svg>
-					</button>
+					</button> -->
 
 					
 					
@@ -51,13 +51,16 @@ get_header();
 
 				// var_dump($posts);
 
+				$searchTerm = strtolower($_POST['search-titles']);
 				foreach ($posts as $post){
-					if ($_POST['search-titles']){
-						if (strpos(strtolower($post->post_title), strtolower($_POST['search-titles']))){
+					$title = strtolower($post->post_title);
+					if ($searchTerm){
+						if (strpos($title, $searchTerm) !== false){
 							include('template-parts/includes/recipe-grid.php');
 						}
 					} else {
 						include('template-parts/includes/recipe-grid.php');
+
 					}
 					
 				}?>

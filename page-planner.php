@@ -151,7 +151,7 @@ get_header();
                 ?>
             </div><!-- .plan-wrapper -->
             
-            <button id="clear-storage">Clear Storage</button>
+            <button id="clear-storage">Reset Meal Plan</button>
 		</div><!-- .site-container -->
 	</main><!-- #content -->
     
