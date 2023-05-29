@@ -48,6 +48,10 @@
                 .servings{
                     display:flex;
                     column-gap:$half_padding;
+                    #serving-size{
+                        flex:1;
+                        margin-right:$container_padding;
+                    }
                 }
                 #add-recipe{
                     width:50px;
