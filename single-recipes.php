@@ -167,7 +167,7 @@ get_header();
 						<div class="site-container">
 							<div class="card-servings row cols-2">
 								<div class="servings">
-									Servings: <input id="serving-size" type="number" value="<?php echo $serving_size?>">
+									<span>Servings:</span> <input id="serving-size" type="number" value="<?php echo $serving_size?>">
 								</div>
 
 								<button id="add-recipe">Add</button>
@@ -216,7 +216,7 @@ get_header();
 							<div class="card-nutrition">
 
 								<h2> Details: </h2>
-								
+
 								<div class="card-meta row cols-1">
 									<div class="col">
 										<?php if (count($cuisineAr) > 0){
