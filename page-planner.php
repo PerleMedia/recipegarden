@@ -13,7 +13,7 @@ get_header();
 
             <div class="plan-wrapper row">
 
-                <div id="planner-cards">
+                <div id="planner-cards" ondrop="drop(event)" ondragover="allowDrop(event)">
                 </div><!-- .planner-cards -->
                 
 

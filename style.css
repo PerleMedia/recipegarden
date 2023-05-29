@@ -1029,6 +1029,7 @@ header#header .site-container #site-navigation #menu-toggle::before {
 	    -ms-flex-align: stretch;
 	        align-items: stretch;
 	width: 40%;
+	min-height: calc(100vh - calc(30px + (20px * 2)));
 }
 
 #content.page-planner .plan-wrapper #planner-cards h4 {

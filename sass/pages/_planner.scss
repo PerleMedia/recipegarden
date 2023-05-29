@@ -8,6 +8,7 @@
         #planner-cards{
             align-items: stretch;
             width:40%;
+            min-height: calc(100vh - #{$header_height_mobile});
             h4{
                 width:90%;
                 margin:0 auto;
