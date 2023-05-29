@@ -146,10 +146,10 @@ get_header();
 							<div class="card-meta row cols-2">
 							
 								<div class="calories">
-									<?php echo $calories?>
+									<span class="caption"><?php echo $calories?> calories</span>
 								</div>
 								<div class="time">
-									<?php echo $cooking_time?> mins
+								<span class="caption"><?php echo $cooking_time?> minutes</span>
 								</div>
 								
 						
@@ -166,10 +166,12 @@ get_header();
 					<div class="card-body">
 						<div class="site-container">
 							<div class="card-servings row">
-								<span>Servings:</span> 
+								<span class="caption">Servings:</span> 
 								<input id="serving-size" type="number" value="<?php echo $serving_size?>">
-								<button id="add-recipe">Add</button>
+								<button id="add-recipe">Add to plan</button>
 							</div><!-- .card-servings -->
+
+							<span id="mealplan-success"><i>This has been added to your <a href="/planner">mealplan</a></i></span>
 
 							<div class="card-ingredients">
 								<h2> Ingredients: </h2>
@@ -333,9 +335,6 @@ get_header();
 	</script>
 
 	<script>
-		console.log(localStorage)
-		console.log('getitem', JSON.parse(JSON.stringify(localStorage.getItem('recipeList'))))
-		////
 		function setCookie(name,value,days) {
 			var expires = "";
 			if (days) {
@@ -346,7 +345,7 @@ get_header();
 			document.cookie = name + "=" + (value || "")  + expires + "; path=/";
 		}
 
-		///
+		// Add recipe to mealplan logic
 		let servings;
 		let postId = <?php echo json_encode($post->ID); ?>;
 
@@ -354,17 +353,16 @@ get_header();
 			servings = Math.ceil(document.getElementById('serving-size').value);
 			let plannerRecipes = localStorage.getItem('recipeList') ? JSON.parse(localStorage.getItem('recipeList')) : [];
 			
-			console.log('plan', plannerRecipes);
 			for (let i = 0; i < servings; i++){
 				plannerRecipes.push(postId);
 			}
 
 			plannerRecipes = JSON.stringify(plannerRecipes);
 			localStorage.setItem('recipeList', plannerRecipes);
-			console.log(localStorage)
-			console.log(plannerRecipes)
 
 			setCookie('recipeList', plannerRecipes, 14);
+
+			document.getElementById('mealplan-success').style.display = "block";
 		})
 
 

@@ -4,7 +4,7 @@
 html{
     scroll-behavior: smooth;
     font-family:$primary_font;
-    font-size:18px;
+    font-size:16px;
     line-height:1.8em;
     box-sizing: border-box;
 }
@@ -12,6 +12,8 @@ html{
 #page.overlay-active{
     max-height:100vh;
     overflow:hidden;
+    z-index: 9999
+    ;
     header#header{
         .site-container{
             #site-navigation{
@@ -59,6 +61,18 @@ a{
     &:hover{
         color:$secondary_color;
     }
+}
+
+button,
+.button{
+    background-color: $primary_color;
+    border:0;
+    padding: 10px 15px;
+    text-transform: uppercase;
+    font-family: 'Jost';
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: #fff;
 }
 
 .primary{

@@ -33,8 +33,13 @@ h3,
     line-height:1.5em;
 }
 
-h4{
+h4,
+.caption{
     font-size:$text_standard;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-family: 'Jost';
+    font-size: 12px;
 }
 
 h5,

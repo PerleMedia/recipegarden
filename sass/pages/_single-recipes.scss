@@ -36,6 +36,7 @@
                 }
                 .card-meta{
                     flex-wrap: nowrap;
+                    color:$secondary_color;
                 }
             }
         }
@@ -46,14 +47,22 @@
                 flex-wrap: nowrap;
                 justify-content: center;
                 column-gap:$half_padding;
-                
+                span{
+                    line-height:35px;
+                }
                 #serving-size{
-                    width:100%;
+                    flex:1;
+                    width: 100%;
                 }
                 #add-recipe{
-                    width:50px;
-                    height: 30px;
+                    flex:1;
                 }
+            }
+            #mealplan-success{
+                color:$primary_color;
+                text-align: center;
+                display: block;
+                display:none;
             }
         }
     }
