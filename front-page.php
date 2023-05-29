@@ -12,7 +12,7 @@ get_header();
 		<div class="filter">
 			<div class="tool-wrapper">
 
-				<form action="/" autocomplete="off" method='POST' class="row cols-2"> 
+				<form action="/recipegarden" autocomplete="off" method='POST' class="row cols-2"> 
 					<input type="text" id="search-titles" name="search-titles" placeholder="Search..." value="<?php if(isset($_POST['search-titles'])) { echo $_POST['search-titles']; } ?>"></input>
 					<button id="search-recipes" type="submit" value="search">
 						<svg id="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 343.05 342.94"><title>search-icon</title><path d="M140.1,280a139.26,139.26,0,0,0,86.36-29.91l92.84,92.85,23.75-23.74L250.2,226.35A140,140,0,1,0,140.1,280Zm0-246.4A106.4,106.4,0,1,1,64.87,64.76,106.41,106.41,0,0,1,140.1,33.6Z"/></svg>
