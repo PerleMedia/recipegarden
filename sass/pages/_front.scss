@@ -4,7 +4,7 @@
 #content.front-page{
     min-height: calc(100vh - #{$header_height_mobile} - 20vh); //20vh: footer height placeholder
     .site-container{
-        .filter{
+        .filter-form{
             .tool-wrapper{
                 display: flex;
                 align-items: center;
@@ -41,35 +41,60 @@
             #filter-wrapper{
                 overflow: hidden;
                 max-height:0;
-                padding: 0 $double_padding;
                 background-color: $accent_color;
                 color:#fff;
                 transition:$transition;
-                margin: 20px 0;
+                margin:20px 0 0 0;
                 &.active{
                     max-height: 100vh;
-                    padding: $double_padding;
                     transition:$transition;
-                    margin: 20px 0;
+                    margin: 20px 0 20px 0;
                 }
                 .filter{
                     .filter-label{
-                        display: block;
-                        padding: 10px 0;
+                        padding: 10px 15px;
+                        display: flex;
+                        .accordion-expand{
+                            margin-left: auto;
+                        }
                         &:not(:last-child){
                             border-bottom: 1px solid rgba(255,255,255,.1);
                         }
                     }
-                    label{
-                        display:inline-block;
-                        margin-left:15px;
-                        background-color: transparent;
-                        &.active{
-                            background-color: purple;
+                    .accordion-content{
+                        background: rgba(255,255,255,.025);
+                        overflow:hidden;
+                        height: 0;
+                        label{
+                            display:inline-block;
+                            margin: 20px 0 20px 15px;
+                            padding: 5px 10px;
+                            line-height: 1em;
+                            border-radius: 100px;
+                            background: rgba(255,255,255,.2);
+                            &.active{
+                                background-color: $primary_color;
+                            }
+                        }
+                        input[type="checkbox"]{
+                            display:none;
+                        }
+                        &.calories{
+                            display: flex;
+                            column-gap: 15px;  
+                            margin: 0 15px;                      
+                            input[type="number"]{
+                                width: 100%;
+                                border: none;
+                                padding: 10px;
+                                margin:20px 0;
+                            }
                         }
                     }
-                    input[type="checkbox"]{
-                        display:none;
+                    &.active{
+                        .accordion-content{
+                            height: 100%;
+                        }
                     }
                 }
             }

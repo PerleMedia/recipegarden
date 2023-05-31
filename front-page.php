@@ -8,7 +8,7 @@ get_header();
 
 	<main id="content" class="site-main front-page">
 		<div class="site-container">
-			<form class="filter" autocomplete="off" method='POST'>
+			<form class="filter-form" autocomplete="off" method='POST'>
 				<div class="tool-wrapper">
 
 					<div class="search row cols-2"> 
@@ -25,8 +25,8 @@ get_header();
 
 				<div id="filter-wrapper">
 					<div class="filter">
-						<div class="caption filter-label">By Calories</div>
-						<div class="accordion-content"> 
+						<div class="caption filter-label">By Calories <span class="accordion-expand">&#65291;</span></div>
+						<div class="accordion-content calories"> 
 							<input type="number" name="filter-cals-min" placeholder="Minimum" value="<?php if(isset($_POST['filter-cals-min'])) { echo $_POST['filter-cals-min']; } ?>"></input>
 							<input type="number" name="filter-cals-max" placeholder="Maximum" value="<?php if(isset($_POST['filter-cals-max'])) { echo $_POST['filter-cals-max']; } ?>"></input>
 						</div> 
@@ -34,7 +34,7 @@ get_header();
 
 					
 					<div class="filter">
-						<div class="caption filter-label">By Cuisines</div>
+						<div class="caption filter-label">By Cuisines <span class="accordion-expand">&#65291;</span></div>
 						<div class="accordion-content">
 							<?php
 								$allCuisines = get_terms(['taxonomy' => 'recipe-cuisines', 'hide_empty' => true]);
@@ -53,7 +53,7 @@ get_header();
 					
 
 					<div class="filter">
-						<div class="caption filter-label">By Courses</div>
+						<div class="caption filter-label">By Courses <span class="accordion-expand">&#65291;</span></div>
 						<div class="accordion-content">
 							<?php
 								$allCourses = get_terms(['taxonomy' => 'recipe-courses', 'hide_empty' => true]);
@@ -72,7 +72,7 @@ get_header();
 					
 					
 					<div class="filter">
-						<div class="caption filter-label">By Diets</div>
+						<div class="caption filter-label">By Diets <span class="accordion-expand">&#65291;</span></div>
 						<div class="accordion-content">
 							<?php
 								$allDiets = get_terms(['taxonomy' => 'recipe-diets', 'hide_empty' => true]);
@@ -91,7 +91,7 @@ get_header();
 					
 
 					<div class="filter">
-						<div class="caption filter-label">By Tags</div>
+						<div class="caption filter-label">By Tags <span class="accordion-expand">&#65291;</span></div>
 						<div class="accordion-content">
 							<?php
 								$allTags = get_terms(['taxonomy' => 'recipe-tags', 'hide_empty' => true]);
@@ -128,8 +128,8 @@ get_header();
 				$cals_max = $_POST['filter-cals-max'];
 				$cuisines = $_POST['filter-cuisine'] ? $_POST['filter-cuisine'] : array();
 				$courses = $_POST['filter-course'] ? $_POST['filter-course'] : array();
-				$diets = $_POST['filter-diet'];
-				$tags = $_POST['filter-tag'];
+				$diets = $_POST['filter-diet'] ? $_POST['filter-diet'] : array();
+				$tags = $_POST['filter-tag'] ? $_POST['filter-tag'] : array();
 
 
 				// Filter titles
@@ -189,17 +189,42 @@ get_header();
 							}
 						} else return $recipe;
 					}
+					
 					return array_filter($posts, 'filterByCourses');
 				}
 
 				// Filter diets
 				function matchDiets($posts){
-					
+					function filterByDiets($recipe){
+						$diets = get_the_terms( $recipe->ID, 'recipe-diets');
+						if ($_POST['filter-diet']){
+							if ($diets){
+								foreach ($diets as $category){
+									if (in_array($category->term_id, $_POST['filter-diet'])){
+										return $category;
+									}
+								}
+							}
+						} else return $recipe;
+					}
+					return array_filter($posts, 'filterByDiets');
 				}
 
 				// Filter tags
 				function matchTags($posts){
-					
+					function filterByTags($recipe){
+						$tags = get_the_terms( $recipe->ID, 'recipe-tags');
+						if ($_POST['filter-tag']){
+							if ($tags){
+								foreach ($tags as $category){
+									if (in_array($category->term_id, $_POST['filter-tag'])){
+										return $category;
+									}
+								}
+							}
+						} else return $recipe;
+					}
+					return array_filter($posts, 'filterByTags');
 				}
 
 				// TEMPLATE
@@ -217,10 +242,10 @@ get_header();
 				$filterTwo = matchCalories($filterOne);
 				$filterThree = matchCuisines($filterTwo);
 				$filterFour = matchCourses($filterThree);
-				// $filterFive = matchDiets($filterFour);
-				// $filterSix = matchTags($filterFive);
+				$filterFive = matchDiets($filterFour);
+				$filterSix = matchTags($filterFive);
 
-				$filteredPosts = $filterFour;
+				$filteredPosts = $filterSix;
 				
 				if ($filteredPosts){
 					foreach ($filteredPosts as $post){
@@ -242,11 +267,9 @@ get_header();
 		const diets = <?php echo json_encode($diets); ?>;
 		const tags = <?php echo json_encode($tags); ?>;
 
-
 		let allLabels = [];
-		allLabels.push(...cuisines, ...courses);
-		
 		let labelAr = [];
+		allLabels.push(...cuisines, ...courses, ...diets, ...tags);
 		allLabels.forEach(label => {
 			document.getElementById(label).classList.add('active')
 			labelAr.push(document.getElementById(label));
@@ -254,6 +277,7 @@ get_header();
 		labelAr.forEach(label => {
 			label.children[0].checked = true;
 		});
+
 		let filterLabels = document.querySelectorAll('.label-button');
 		filterLabels.forEach(label => {
 			label.addEventListener('click', function(e){
@@ -265,6 +289,15 @@ get_header();
 				} else input.checked = true;
 			})
 		})
+
+		let filters = document.querySelectorAll('.filter');
+		filters.forEach(filter => {
+			filter.addEventListener('click', function(e){
+				e.preventDefault();
+				filter.classList.toggle('active');
+			})
+		})
+
 	</script>
 <?php
 get_footer();
