@@ -825,6 +825,7 @@ header#header .site-container #site-navigation #menu-toggle::before {
 }
 
 #content.front-page .site-container .filter-form #filter-wrapper .filter .accordion-content label {
+	font-size: 12px;
 	display: inline-block;
 	margin: 20px 0 20px 15px;
 	padding: 5px 10px;

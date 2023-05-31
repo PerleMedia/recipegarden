@@ -27,8 +27,8 @@ get_header();
 					<div class="filter">
 						<div class="caption filter-label">By Calories <span class="accordion-expand">&#65291;</span></div>
 						<div class="accordion-content calories"> 
-							<input type="number" name="filter-cals-min" placeholder="Minimum" value="<?php if(isset($_POST['filter-cals-min'])) { echo $_POST['filter-cals-min']; } ?>"></input>
-							<input type="number" name="filter-cals-max" placeholder="Maximum" value="<?php if(isset($_POST['filter-cals-max'])) { echo $_POST['filter-cals-max']; } ?>"></input>
+							<input type="number" class="label-button" name="filter-cals-min" placeholder="Minimum" value="<?php if(isset($_POST['filter-cals-min'])) { echo $_POST['filter-cals-min']; } ?>"></input>
+							<input type="number" class="label-button" name="filter-cals-max" placeholder="Maximum" value="<?php if(isset($_POST['filter-cals-max'])) { echo $_POST['filter-cals-max']; } ?>"></input>
 						</div> 
 					</div>
 
@@ -39,7 +39,7 @@ get_header();
 							<?php
 								$allCuisines = get_terms(['taxonomy' => 'recipe-cuisines', 'hide_empty' => true]);
 								foreach ($allCuisines as $category){
-									echo '<label class="button label-button" id="';
+									echo '<label class="label-button" id="';
 									echo $category->term_id;
 									echo '"><input type="checkbox" name="filter-cuisine[]" value="';
 									echo $category->term_id;
@@ -58,7 +58,7 @@ get_header();
 							<?php
 								$allCourses = get_terms(['taxonomy' => 'recipe-courses', 'hide_empty' => true]);
 								foreach ($allCourses as $category){
-									echo '<label class="button label-button" id="';
+									echo '<label class="label-button" id="';
 									echo $category->term_id;
 									echo '"><input type="checkbox" name="filter-course[]" value="';
 									echo $category->term_id;
@@ -77,7 +77,7 @@ get_header();
 							<?php
 								$allDiets = get_terms(['taxonomy' => 'recipe-diets', 'hide_empty' => true]);
 								foreach ($allDiets as $category){
-									echo '<label class="button label-button" id="';
+									echo '<label class="label-button" id="';
 									echo $category->term_id;
 									echo '"><input type="checkbox" name="filter-diet[]" value="';
 									echo $category->term_id;
@@ -96,7 +96,7 @@ get_header();
 							<?php
 								$allTags = get_terms(['taxonomy' => 'recipe-tags', 'hide_empty' => true]);
 								foreach ($allTags as $category){
-									echo '<label class="button label-button" id="';
+									echo '<label class="label-button" id="';
 									echo $category->term_id;
 									echo '"><input type="checkbox" name="filter-tag[]" value="';
 									echo $category->term_id;
@@ -293,8 +293,13 @@ get_header();
 		let filters = document.querySelectorAll('.filter');
 		filters.forEach(filter => {
 			filter.addEventListener('click', function(e){
+				let conditions = e.target.classList.contains('accordion-content') || e.target.classList.contains('label-button');
 				e.preventDefault();
-				filter.classList.toggle('active');
+				if (!conditions){
+					filter.classList.toggle('active');
+				} 
+	
+				console.log(e.target);
 			})
 		})
 
