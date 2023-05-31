@@ -61,22 +61,13 @@ function drop(ev) {
 
 }
 
-/**
-* Add a delete button to remove a recipe, and recalculate calories
-*/
-function Delete(button){
-  var parent = button.parentNode;
-  var grand_father = parent.parentNode;
-  grand_father.removeChild(parent);
-
-  // innerCalculator('#day1 .calorie-count', 'caloric-sum-1', '#day1 .fat-count', 'fat-sum-1', '#day1 .protein-count', 'protein-sum-1');
-  // innerCalculator('#day2 .calorie-count', 'caloric-sum-2', '#day2 .fat-count', 'fat-sum-2', '#day2 .protein-count', 'protein-sum-2');
-  // innerCalculator('#day3 .calorie-count', 'caloric-sum-3', '#day3 .fat-count', 'fat-sum-3', '#day3 .protein-count', 'protein-sum-3');
-}
-
 /* 
- * Get footer height in px
+ * Functions for recipe filtering logic
  */
+function filterToggle() {
+  let wrapper = document.getElementById('filter-wrapper');
+  wrapper.classList.toggle('active');
+}
 
 
 /* 
@@ -94,8 +85,8 @@ jQuery(document).ready(function($) {
   function getHeightsOnResize(){
     footerHeight = $('#footer').height();
     headerHeight = $('#header').height();
-    console.log('footer= ' + footerHeight);
-    console.log('header= ' + headerHeight);
+    // console.log('footer= ' + footerHeight);
+    // console.log('header= ' + headerHeight);
     // contentSpace.css('margin-bottom', footerHeight);
   }
   window.addEventListener('resize', getHeightsOnResize);
@@ -104,20 +95,11 @@ jQuery(document).ready(function($) {
   $('#search-titles').on('input', function() { 
     console.log($(this).val())
     $(this).val() // get the current value of the input field.
-    
-    // $.ajax({
-    //   type: 'POST',
-    //   url: '/wp-admin/admin-ajax.php',
-    //   dataType: 'html',
-    //   data: {
-    //     action: 'filter_recipes',
-    //     category: $(this).val(),
-    //   },
-    //   success: function(res) {
-    //     $('.project-tiles').html(res);
-    //   }
-    // })
+  });
 
-});
+  $('#filter-cals-min').on('input', function() { 
+    console.log($(this).val())
+    $(this).val() // get the current value of the input field.
+  });
 });
 
