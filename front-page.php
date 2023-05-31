@@ -163,36 +163,33 @@ get_header();
 					function filterByCuisines($recipe){
 						$cuisines = get_the_terms( $recipe->ID, 'recipe-cuisines');
 						if ($_POST['filter-cuisine']){
-							$inputCuisines = $_POST['filter-cuisine'];
-						} else {
-							$inputCuisines = array();
-						}
-
-						if ($_POST['filter-cuisine']){
 							if ($cuisines){
-								foreach ($cuisines as $cuisine){
-									if (in_array($cuisine->term_id, $inputCuisines)){
-										return $cuisine;
+								foreach ($cuisines as $category){
+									if (in_array($category->term_id, $_POST['filter-cuisine'])){
+										return $category;
 									}
 								}
 							}
-						} else {
-
-							return $recipe;
-
-						}
-						
+						} else return $recipe;
 					}
-
-					// foreach ($posts as $recipe){
-					// 	filterByCuisines($recipe);
-					// }
 					return array_filter($posts, 'filterByCuisines');
 				}
 
 				// Filter courses
 				function matchCourses($posts){
-					
+					function filterByCourses($recipe){
+						$courses = get_the_terms( $recipe->ID, 'recipe-courses');
+						if ($_POST['filter-course']){
+							if ($courses){
+								foreach ($courses as $category){
+									if (in_array($category->term_id, $_POST['filter-course'])){
+										return $category;
+									}
+								}
+							}
+						} else return $recipe;
+					}
+					return array_filter($posts, 'filterByCourses');
 				}
 
 				// Filter diets
@@ -219,11 +216,11 @@ get_header();
 				$filterOne = matchName($posts);
 				$filterTwo = matchCalories($filterOne);
 				$filterThree = matchCuisines($filterTwo);
-				// $filterFour = matchCourses($filterThree);
+				$filterFour = matchCourses($filterThree);
 				// $filterFive = matchDiets($filterFour);
 				// $filterSix = matchTags($filterFive);
 
-				$filteredPosts = $filterThree;
+				$filteredPosts = $filterFour;
 				
 				if ($filteredPosts){
 					foreach ($filteredPosts as $post){
@@ -247,20 +244,17 @@ get_header();
 
 
 		let allLabels = [];
-		allLabels.push(...cuisines);
+		allLabels.push(...cuisines, ...courses);
 		
 		let labelAr = [];
 		allLabels.forEach(label => {
 			document.getElementById(label).classList.add('active')
 			labelAr.push(document.getElementById(label));
 		});
-
 		labelAr.forEach(label => {
 			label.children[0].checked = true;
 		});
-
 		let filterLabels = document.querySelectorAll('.label-button');
-
 		filterLabels.forEach(label => {
 			label.addEventListener('click', function(e){
 				e.preventDefault();
