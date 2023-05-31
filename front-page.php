@@ -24,31 +24,90 @@ get_header();
 				</div><!-- .tool-wrapper -->
 
 				<div id="filter-wrapper">
-					<div class="filter calories">
-						<label class="caption">By Calories</label>
-						<div>
-						<div> 
+					<div class="filter">
+						<div class="caption filter-label">By Calories</div>
+						<div class="accordion-content"> 
 							<input type="number" name="filter-cals-min" placeholder="Minimum" value="<?php if(isset($_POST['filter-cals-min'])) { echo $_POST['filter-cals-min']; } ?>"></input>
 							<input type="number" name="filter-cals-max" placeholder="Maximum" value="<?php if(isset($_POST['filter-cals-max'])) { echo $_POST['filter-cals-max']; } ?>"></input>
 						</div> 
-							
-						</div>
-						<label class="caption">By Cuisines</label>
-						<div>
+					</div>
+
+					
+					<div class="filter">
+						<div class="caption filter-label">By Cuisines</div>
+						<div class="accordion-content">
 							<?php
-								$cuisines = get_terms(['taxonomy' => 'recipe-cuisines', 'hide_empty' => true]);
-								// var_dump($cuisines);
-								foreach ($cuisines as $cuisine){
-									echo '<span class="button">';
-									echo $cuisine->name;
-									echo '</span>';
+								$allCuisines = get_terms(['taxonomy' => 'recipe-cuisines', 'hide_empty' => true]);
+								foreach ($allCuisines as $category){
+									echo '<label class="button label-button" id="';
+									echo $category->term_id;
+									echo '"><input type="checkbox" name="filter-cuisine[]" value="';
+									echo $category->term_id;
+									echo '">';
+									echo $category->name;
+									echo '</label>';
 								}
 							?>
 						</div>
-						<label class="caption">By Courses</label>
-						<label class="caption">By Diets</label>
-						<label class="caption">By Tags</label>
 					</div>
+					
+
+					<div class="filter">
+						<div class="caption filter-label">By Courses</div>
+						<div class="accordion-content">
+							<?php
+								$allCourses = get_terms(['taxonomy' => 'recipe-courses', 'hide_empty' => true]);
+								foreach ($allCourses as $category){
+									echo '<label class="button label-button" id="';
+									echo $category->term_id;
+									echo '"><input type="checkbox" name="filter-course[]" value="';
+									echo $category->term_id;
+									echo '">';
+									echo $category->name;
+									echo '</label>';
+								}
+							?>
+						</div>
+					</div>
+					
+					
+					<div class="filter">
+						<div class="caption filter-label">By Diets</div>
+						<div class="accordion-content">
+							<?php
+								$allDiets = get_terms(['taxonomy' => 'recipe-diets', 'hide_empty' => true]);
+								foreach ($allDiets as $category){
+									echo '<label class="button label-button" id="';
+									echo $category->term_id;
+									echo '"><input type="checkbox" name="filter-diet[]" value="';
+									echo $category->term_id;
+									echo '">';
+									echo $category->name;
+									echo '</label>';
+								}
+							?>
+						</div>
+					</div>
+					
+
+					<div class="filter">
+						<div class="caption filter-label">By Tags</div>
+						<div class="accordion-content">
+							<?php
+								$allTags = get_terms(['taxonomy' => 'recipe-tags', 'hide_empty' => true]);
+								foreach ($allTags as $category){
+									echo '<label class="button label-button" id="';
+									echo $category->term_id;
+									echo '"><input type="checkbox" name="filter-tag[]" value="';
+									echo $category->term_id;
+									echo '">';
+									echo $category->name;
+									echo '</label>';
+								}
+							?>
+						</div>
+					</div>
+					
 				</div><!-- .filter-wrapper -->
 
 			</form><!-- .filter -->
@@ -63,19 +122,14 @@ get_header();
 					'order'    => 'DESC'
 				]);
 
-				// Custom Post Taxonomies
-				$custom_taxonomies = get_taxonomies(['object_type' => ['recipes']]);
-				// $cuisines = get_terms(['taxonomy' => 'recipe-cuisines', 'hide_empty' => true]);
-				$courses = get_terms(['taxonomy' => 'recipe-courses', 'hide_empty' => true]);
-				$diets = get_terms(['taxonomy' => 'recipe-diets', 'hide_empty' => true]);
-				$tags = get_terms(['taxonomy' => 'recipe-tags', 'hide_empty' => true]);
-
-				var_dump($_POST['search-titles']);
-				var_dump($_POST['filter-cals-min']);
-
 				// For sending to JS
 				$search_titles = $_POST['search-titles'];
 				$cals_min = $_POST['filter-cals-min'];
+				$cals_max = $_POST['filter-cals-max'];
+				$cuisines = $_POST['filter-cuisine'] ? $_POST['filter-cuisine'] : array();
+				$courses = $_POST['filter-course'] ? $_POST['filter-course'] : array();
+				$diets = $_POST['filter-diet'];
+				$tags = $_POST['filter-tag'];
 
 
 				// Filter titles
@@ -88,7 +142,6 @@ get_header();
 						}
 						 return $recipe;				
 					}
-
 					return array_filter($posts, 'filterByName');
 				}
 
@@ -105,30 +158,78 @@ get_header();
 					return array_filter($posts, 'filterByCalories');
 				}
 
+				// Filter cuisines
+				function matchCuisines($posts){
+					function filterByCuisines($recipe){
+						$cuisines = get_the_terms( $recipe->ID, 'recipe-cuisines');
+						if ($_POST['filter-cuisine']){
+							$inputCuisines = $_POST['filter-cuisine'];
+						} else {
+							$inputCuisines = array();
+						}
+
+						if ($_POST['filter-cuisine']){
+							if ($cuisines){
+								foreach ($cuisines as $cuisine){
+									if (in_array($cuisine->term_id, $inputCuisines)){
+										return $cuisine;
+									}
+								}
+							}
+						} else {
+
+							return $recipe;
+
+						}
+						
+					}
+
+					// foreach ($posts as $recipe){
+					// 	filterByCuisines($recipe);
+					// }
+					return array_filter($posts, 'filterByCuisines');
+				}
+
+				// Filter courses
+				function matchCourses($posts){
+					
+				}
+
+				// Filter diets
+				function matchDiets($posts){
+					
+				}
+
+				// Filter tags
+				function matchTags($posts){
+					
+				}
+
 				// TEMPLATE
-				// function matchCalories($posts){
-				// 	function filterByCalories($recipe){	
-				// 		var_dump($recipe->calories);			
-				// 		// return $recipe;		
+				// function matchCourses($posts){
+				// 	function filterByCourses($recipe){			
+				// 		return $recipe;		
 				// 	}
 
-				// 	var_dump(array_filter($posts, 'filterByCalories'));
+				// 	var_dump(array_filter($posts, 'filterByCourses'));
 				// 	// return $posts;
 
 				// }
 
 				$filterOne = matchName($posts);
 				$filterTwo = matchCalories($filterOne);
-				$filterThree = $filterTwo;
-				$filterFour = $filterThree;
-				$filterFive = $filterFour;
-				$filterSix = $filterFive;
+				$filterThree = matchCuisines($filterTwo);
+				// $filterFour = matchCourses($filterThree);
+				// $filterFive = matchDiets($filterFour);
+				// $filterSix = matchTags($filterFive);
 
-				$filteredPosts = $filterSix;
+				$filteredPosts = $filterThree;
 				
-				foreach ($filteredPosts as $post){
-					include('template-parts/includes/recipe-grid.php');
-				}
+				if ($filteredPosts){
+					foreach ($filteredPosts as $post){
+						include('template-parts/includes/recipe-grid.php');
+					}
+				} else echo 'no posts!'
 
 				?>
 			</div>
@@ -139,7 +240,37 @@ get_header();
 	<script>
 		const searchtitles = <?php echo json_encode($search_titles); ?>;
 		const filtercalsmin = <?php echo json_encode($cals_min); ?>;
-		console.log(searchtitles, filtercalsmin);
+		const cuisines = <?php echo json_encode($cuisines); ?>;
+		const courses = <?php echo json_encode($courses); ?>;
+		const diets = <?php echo json_encode($diets); ?>;
+		const tags = <?php echo json_encode($tags); ?>;
+
+
+		let allLabels = [];
+		allLabels.push(...cuisines);
+		
+		let labelAr = [];
+		allLabels.forEach(label => {
+			document.getElementById(label).classList.add('active')
+			labelAr.push(document.getElementById(label));
+		});
+
+		labelAr.forEach(label => {
+			label.children[0].checked = true;
+		});
+
+		let filterLabels = document.querySelectorAll('.label-button');
+
+		filterLabels.forEach(label => {
+			label.addEventListener('click', function(e){
+				e.preventDefault();
+				label.classList.toggle('active');
+				let input = label.children[0];
+				if (input.checked){
+					input.checked = false;
+				} else input.checked = true;
+			})
+		})
 	</script>
 <?php
 get_footer();

@@ -805,13 +805,27 @@ header#header .site-container #site-navigation #menu-toggle::before {
 	margin: 20px 0;
 }
 
-#content.front-page .site-container .filter #filter-wrapper .filter label {
+#content.front-page .site-container .filter #filter-wrapper .filter .filter-label {
 	display: block;
 	padding: 10px 0;
 }
 
-#content.front-page .site-container .filter #filter-wrapper .filter label:not(:last-child) {
+#content.front-page .site-container .filter #filter-wrapper .filter .filter-label:not(:last-child) {
 	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#content.front-page .site-container .filter #filter-wrapper .filter label {
+	display: inline-block;
+	margin-left: 15px;
+	background-color: transparent;
+}
+
+#content.front-page .site-container .filter #filter-wrapper .filter label.active {
+	background-color: purple;
+}
+
+#content.front-page .site-container .filter #filter-wrapper .filter input[type="checkbox"] {
+	display: none;
 }
 
 #content.front-page .site-container .wrapper {
