@@ -59,6 +59,33 @@ function drop(ev) {
       ev.target.appendChild(node);
   }
 
+  const mealCards = document.querySelectorAll('.meal-card');
+  const calorieContainers = document.querySelectorAll('.caloric-sum');
+  // console.log(mealCards);
+  
+  let recipeData = [];
+  let calorieData = [];
+  
+  for (let i = 0; i < mealCards.length; i++){
+    recipeData[i] = mealCards[i].querySelectorAll('.recipe-card');
+    
+    let calArr = [0];
+    let totalCals;
+    recipeData[i].forEach(recipe => {
+     calArr.push(parseInt(recipe.dataset['calories']))
+    })
+  
+    totalCals = calArr.reduce((a, b) => {
+        return a + b;
+    })
+  
+    calorieData.push(totalCals);
+    calorieContainers[i].innerHTML = calorieData[i];
+  }
+
+  // console.log(mealCards);
+  console.log(calorieData);
+  
 }
 
 /* 

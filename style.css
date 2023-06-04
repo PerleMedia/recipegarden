@@ -1146,9 +1146,12 @@ header#header .site-container #site-navigation #menu-toggle::before {
 	width: 100%;
 }
 
+#content.page-planner .plan-wrapper #plan-container .meal-card .caloric-sum {
+	display: inline;
+}
+
 #content.page-planner .plan-wrapper #plan-container .meal-card #lunch,
-#content.page-planner .plan-wrapper #plan-container .meal-card #dinner,
-#content.page-planner .plan-wrapper #plan-container .meal-card #div1 {
+#content.page-planner .plan-wrapper #plan-container .meal-card #dinner {
 	-webkit-box-sizing: border-box;
 	        box-sizing: border-box;
 	background: gray;
@@ -1159,8 +1162,7 @@ header#header .site-container #site-navigation #menu-toggle::before {
 }
 
 #content.page-planner .plan-wrapper #plan-container .meal-card #lunch .recipe-card .img-wrap,
-#content.page-planner .plan-wrapper #plan-container .meal-card #dinner .recipe-card .img-wrap,
-#content.page-planner .plan-wrapper #plan-container .meal-card #div1 .recipe-card .img-wrap {
+#content.page-planner .plan-wrapper #plan-container .meal-card #dinner .recipe-card .img-wrap {
 	display: none;
 }
 

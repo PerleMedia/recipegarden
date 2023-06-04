@@ -28,9 +28,11 @@
             overflow:scroll;
             .meal-card{
                 width: 100%;
+                .caloric-sum{
+                    display:inline;
+                }
                 #lunch,
-                #dinner,
-                #div1{
+                #dinner{
                     box-sizing: border-box;
                     background:rgb(128, 128, 128);
                     padding:20px;
