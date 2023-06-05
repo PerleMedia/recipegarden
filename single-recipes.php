@@ -384,10 +384,10 @@ get_header();
       "recipeCuisine":  <?php echo json_encode($cuisineAr); ?>,
       "nutrition": {
         "@type": "NutritionInformation",
-        "calories": <?php echo json_encode($calories . " calories"); ?>,
+        "calories": <?php echo json_encode($calories . " calories"); ?>
       },
       "recipeIngredient": <?php echo json_encode($allIngredients); ?>,
-      "recipeInstructions": <?php echo json_encode($allInstructions); ?>,
+      "recipeInstructions": <?php echo json_encode($allInstructions); ?>
     }
     </script>
 
