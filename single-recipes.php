@@ -146,7 +146,7 @@ get_header();
 							<div class="card-meta row cols-2">
 							
 								<div class="calories">
-									<span class="caption" itemprop="calories"><?php echo $calories?> calories</span>
+									<span class="caption"><span itemprop="calories"><?php echo $calories?></span> calories</span>
 								</div>
 								<div class="time">
 								<span class="caption"><?php echo $cooking_time?> minutes</span>
@@ -179,6 +179,8 @@ get_header();
 								
 								<table>
 									<?php 
+										$allIngredients = array();
+										$finalIngredient;
 										foreach ($ingredientsAr as $ingredient){
 											echo '<tr class="ing" itemprop="ingredients">';
 											echo '<td class="ingredient-qty"><span class="ingredient-quantity">' . $ingredient->quantity . '</span> <span class="ingredient-measurement">' . $ingredient->measurement . '</span></td>';
@@ -186,6 +188,8 @@ get_header();
 											echo '<td class="ingredient-notes"><span class="ingredient-notes">' . $ingredient->note . '</span> </td>';
 											echo '</td>';
 											echo '</tr>';
+											$finalIngredient = $ingredient->quantity . ' ' . $ingredient->measurement . ' ' . $ingredient->ingredient;
+											array_push($allIngredients, $finalIngredient);
 										}
 									?>
 								</table>
@@ -199,14 +203,24 @@ get_header();
 
 									<ol>
 
-									<?php while( have_rows('instructions') ) : the_row();
-										$step = get_sub_field('step');?>
+									<?php 
+										$allInstructions = array();
+										$finalInstruction = new stdClass();
+
+										while( have_rows('instructions') ) : the_row();
+											$step = get_sub_field('step');
+											$finalInstruction->{'@type'} = 'HowToStep';
+											$finalInstruction->name = $step;
+											array_push($allInstructions, $finalInstruction);
+											var_dump($allInstructions);?>
+										
+											<li><?php echo $step?></li>
+
+									<?php 
 									
-
-										<li><?php echo $step?></li>
-
-
-									<?php endwhile; ?>	
+										endwhile; 
+										
+										?>	
 									
 									</ol>
 
@@ -355,9 +369,28 @@ get_header();
 
 			document.getElementById('mealplan-success').style.display = "block";
 		})
-
-
 	</script>
+
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "Recipe",
+      "name": <?php echo json_encode($title); ?>,
+      "image": [
+        <?php echo json_encode($image_url); ?>
+      ],
+      "totalTime": <?php echo json_encode($cooking_time); ?>,
+      "recipeYield": <?php echo json_encode($serving_size); ?>,
+      "recipeCategory": <?php echo json_encode($courseAr); ?>,
+      "recipeCuisine":  <?php echo json_encode($cuisineAr); ?>,
+      "nutrition": {
+        "@type": "NutritionInformation",
+        "calories": <?php echo json_encode($calories . " calories"); ?>,
+      },
+      "recipeIngredient": <?php echo json_encode($allIngredients); ?>,
+      "recipeInstructions": <?php echo json_encode($allInstructions); ?>,
+    }
+    </script>
 
 <?php
 get_footer();
