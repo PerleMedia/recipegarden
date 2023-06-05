@@ -27,7 +27,7 @@ get_header();
 					<div class="header-container">
 						<div class="filter-header row">
 							<h2 class="caption">Filter</h2>
-							<a class="button" href="/">Clear</a>
+							<a class="button" href="<?php echo get_site_url(); ?>">Clear</a>
 							<button id="filter-recipes" type="submit" class="button">Filter</button>
 						</div>
 					</div>
