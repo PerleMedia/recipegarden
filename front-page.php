@@ -183,10 +183,9 @@ get_header();
 							array_push($recipeIngAr, $ingredient['ingredient']->name);
 						}
 						
-						if (isset($_POST['filter-ingredient'])){
+						if ($_POST['filter-ingredient']){
 							return in_array($_POST['filter-ingredient'], $recipeIngAr);
-						}
-						  return $recipe;
+						} else return $recipe;
 					}
 					return array_filter($posts, 'filterByIngredient');
 				}
