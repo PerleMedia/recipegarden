@@ -132,7 +132,7 @@ get_header();
 
 
 			<article>
-				<div class="recipe-card">
+				<div class="recipe-card" itemscope itemtype="http://schema.org/Recipe">
 
 					<div class="card-header">
 						
@@ -142,11 +142,11 @@ get_header();
 						</div><!-- .image-wrapper -->
 						
 						<div class="title-wrapper">
-							<h1><?php echo $title?></h1>
+							<h1 itemprop="name"><?php echo $title?></h1>
 							<div class="card-meta row cols-2">
 							
 								<div class="calories">
-									<span class="caption"><?php echo $calories?> calories</span>
+									<span class="caption" itemprop="calories"><?php echo $calories?> calories</span>
 								</div>
 								<div class="time">
 								<span class="caption"><?php echo $cooking_time?> minutes</span>
@@ -168,6 +168,7 @@ get_header();
 							<div class="card-servings row">
 								<span class="caption">Servings:</span> 
 								<input id="serving-size" type="number" value="<?php echo $serving_size?>">
+								<span class="default-servings" itemprop="recipeYield" hidden><?php echo $serving_size?></span>
 								<button id="add-recipe">Add to plan</button>
 							</div><!-- .card-servings -->
 
@@ -179,7 +180,7 @@ get_header();
 								<table>
 									<?php 
 										foreach ($ingredientsAr as $ingredient){
-											echo '<tr class="ing-protein">';
+											echo '<tr class="ing" itemprop="ingredients">';
 											echo '<td class="ingredient-qty"><span class="ingredient-quantity">' . $ingredient->quantity . '</span> <span class="ingredient-measurement">' . $ingredient->measurement . '</span></td>';
 											echo '<td class="ingredient-name"><span class="ingredient-name">' . $ingredient->ingredient . '</span> </td>';
 											echo '<td class="ingredient-notes"><span class="ingredient-notes">' . $ingredient->note . '</span> </td>';
