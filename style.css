@@ -825,7 +825,7 @@ header#header .site-container #site-navigation #menu-toggle::before {
 }
 
 #content.front-page .site-container .filter-form #filter-wrapper.active {
-	max-height: 100vh;
+	max-height: 200vh;
 	-webkit-transition: 0.4s ease-in;
 	transition: 0.4s ease-in;
 	margin: 20px 0 20px 0;

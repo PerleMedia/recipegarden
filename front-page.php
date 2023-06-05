@@ -27,8 +27,8 @@ get_header();
 					<div class="header-container">
 						<div class="filter-header row">
 							<h2 class="caption">Filter</h2>
-							<span class="button">Clear Filters</span>
-							<button id="filter-recipes" type="submit" class="button">Filter Recipes</button>
+							<a class="button" href="/">Clear</a>
+							<button id="filter-recipes" type="submit" class="button">Filter</button>
 						</div>
 					</div>
 
