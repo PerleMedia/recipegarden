@@ -210,8 +210,7 @@ get_header();
 											$step = get_sub_field('step');
 											$finalInstruction->{'@type'} = 'HowToStep';
 											$finalInstruction->name = $step;
-											array_push($allInstructions, $finalInstruction);
-											var_dump($allInstructions);?>
+											array_push($allInstructions, $finalInstruction);?>
 										
 											<li><?php echo $step?></li>
 

@@ -320,6 +320,8 @@ button,
 	font-size: 12px;
 	letter-spacing: 2px;
 	color: #fff;
+	line-height: 1.15;
+	cursor: pointer;
 }
 
 .primary {
@@ -796,6 +798,32 @@ header#header .site-container #site-navigation #menu-toggle::before {
 	margin: 20px 0 0 0;
 }
 
+#content.front-page .site-container .filter-form #filter-wrapper .header-container .filter-header {
+	-webkit-box-align: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	padding: 10px 15px;
+	-webkit-box-pack: end;
+	    -ms-flex-pack: end;
+	        justify-content: flex-end;
+}
+
+#content.front-page .site-container .filter-form #filter-wrapper .header-container .filter-header .caption {
+	margin: 0 auto 0 0;
+	font-size: 1.5em;
+	color: white;
+}
+
+#content.front-page .site-container .filter-form #filter-wrapper .header-container .filter-header .button {
+	border-radius: 100px;
+	margin-left: 10px;
+	padding: 5px 10px;
+}
+
+#content.front-page .site-container .filter-form #filter-wrapper .header-container .filter-header .button:not(#filter-recipes) {
+	background: rgba(255, 255, 255, 0.2);
+}
+
 #content.front-page .site-container .filter-form #filter-wrapper.active {
 	max-height: 100vh;
 	-webkit-transition: 0.4s ease-in;
@@ -822,12 +850,13 @@ header#header .site-container #site-navigation #menu-toggle::before {
 	background: rgba(255, 255, 255, 0.025);
 	overflow: hidden;
 	height: 0;
+	padding: 0 15px;
 }
 
 #content.front-page .site-container .filter-form #filter-wrapper .filter .accordion-content label {
 	font-size: 12px;
 	display: inline-block;
-	margin: 20px 0 20px 15px;
+	margin: 5px;
 	padding: 5px 10px;
 	line-height: 1em;
 	border-radius: 100px;
@@ -849,18 +878,19 @@ header#header .site-container #site-navigation #menu-toggle::before {
 	-webkit-column-gap: 15px;
 	   -moz-column-gap: 15px;
 	        column-gap: 15px;
-	margin: 0 15px;
 }
 
 #content.front-page .site-container .filter-form #filter-wrapper .filter .accordion-content.calories input[type="number"] {
 	width: 100%;
 	border: none;
 	padding: 10px;
-	margin: 20px 0;
+	margin: 10px 0;
+	border-radius: 100px;
 }
 
 #content.front-page .site-container .filter-form #filter-wrapper .filter.active .accordion-content {
 	height: 100%;
+	padding: 10px 15px;
 }
 
 #content.front-page .site-container .wrapper {
