@@ -156,10 +156,10 @@ get_header();
 				$ingredient = $_POST['filter-ingredient'];
 				$cals_min = $_POST['filter-cals-min'];
 				$cals_max = $_POST['filter-cals-max'];
-				$cuisines = $_POST['filter-cuisine'] ? $_POST['filter-cuisine'] : array();
-				$courses = $_POST['filter-course'] ? $_POST['filter-course'] : array();
-				$diets = $_POST['filter-diet'] ? $_POST['filter-diet'] : array();
-				$tags = $_POST['filter-tag'] ? $_POST['filter-tag'] : array();
+				$cuisines = isset($_POST['filter-cuisine']) ? $_POST['filter-cuisine'] : array();
+				$courses = isset($_POST['filter-course']) ? $_POST['filter-course'] : array();
+				$diets = isset($_POST['filter-diet']) ? $_POST['filter-diet'] : array();
+				$tags = isset($_POST['filter-tag']) ? $_POST['filter-tag'] : array();
 
 
 				// Filter titles
@@ -184,7 +184,7 @@ get_header();
 							array_push($recipeIngAr, $ingredient['ingredient']->name);
 						}
 						
-						if ($_POST['filter-ingredient']){
+						if (isset($_POST['filter-ingredient'])){
 							return in_array($_POST['filter-ingredient'], $recipeIngAr);
 						} else return $recipe;
 					}
@@ -225,7 +225,7 @@ get_header();
 				function matchCourses($posts){
 					function filterByCourses($recipe){
 						$courses = get_the_terms( $recipe->ID, 'recipe-courses');
-						if ($_POST['filter-course']){
+						if (isset($_POST['filter-course'])){
 							if ($courses){
 								foreach ($courses as $category){
 									if (in_array($category->term_id, $_POST['filter-course'])){
@@ -243,7 +243,7 @@ get_header();
 				function matchDiets($posts){
 					function filterByDiets($recipe){
 						$diets = get_the_terms( $recipe->ID, 'recipe-diets');
-						if ($_POST['filter-diet']){
+						if (isset($_POST['filter-diet'])){
 							if ($diets){
 								foreach ($diets as $category){
 									if (in_array($category->term_id, $_POST['filter-diet'])){
@@ -260,7 +260,7 @@ get_header();
 				function matchTags($posts){
 					function filterByTags($recipe){
 						$tags = get_the_terms( $recipe->ID, 'recipe-tags');
-						if ($_POST['filter-tag']){
+						if (isset($_POST['filter-tag'])){
 							if ($tags){
 								foreach ($tags as $category){
 									if (in_array($category->term_id, $_POST['filter-tag'])){
