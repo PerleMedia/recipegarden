@@ -103,16 +103,18 @@ get_header();
                             $parentId = 2;
                         } elseif ($parent_name == "Herbs"){
                             $parentId = 3;
-                        } elseif ($parent_name == "Protein"){
+                        } elseif ($parent_name == "Grains"){
                             $parentId = 4;
-                        } elseif ($parent_name == "Dairy"){
+                        } elseif ($parent_name == "Protein"){
                             $parentId = 5;
-                        } elseif ($parent_name == "Seasoning"){
+                        } elseif ($parent_name == "Dairy"){
                             $parentId = 6;
-                        } elseif ($parent_name == "Pantry"){
+                        } elseif ($parent_name == "Seasoning"){
                             $parentId = 7;
-                        } elseif ($parent_name == "Sauce"){
+                        } elseif ($parent_name == "Fridge"){
                             $parentId = 8;
+                        } elseif ($parent_name == "Pantry"){
+                            $parentId = 9;
                         } 
 
                         $stQuant = (double)$ingredientData[$i]['quantity'];
@@ -198,7 +200,7 @@ get_header();
 
                 foreach ($recipeIngArr as $printedRecipe){
                     echo '<div>';
-                    echo $printedRecipe->quantity . ' ' . $printedRecipe->measurement . ' ' . $printedRecipe->name;
+                    echo round($printedRecipe->quantity,1) . ' ' . $printedRecipe->measurement . ' ' . $printedRecipe->name;
                     // var_dump($printedRecipe);
                     echo '</div>';
                 }

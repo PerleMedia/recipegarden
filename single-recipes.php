@@ -86,22 +86,24 @@ get_header();
 					$newNot = '(' . $newNot . ')';
 				}
 
-				if ($inType->name == "Fruit"){
+				if ($inType->name == "Protein"){
 					$inType = 1;
 				} elseif ($inType->name == "Vegetable"){
 					$inType = 2;
-				} elseif ($inType->name == "Herbs"){
+				} elseif ($inType->name == "Fruit"){
 					$inType = 3;
-				} elseif ($inType->name == "Protein"){
-					$inType = 4;
 				} elseif ($inType->name == "Dairy"){
+					$inType = 4;
+				} elseif ($inType->name == "Grains"){
 					$inType = 5;
-				} elseif ($inType->name == "Seasoning"){
+				} elseif ($inType->name == "Herbs"){
 					$inType = 6;
-				}  elseif ($inType->name == "Pantry"){
+				} elseif ($inType->name == "Seasoning"){
 					$inType = 7;
-				} elseif ($inType->name == "Sauce"){
+				} elseif ($inType->name == "Fridge"){
 					$inType = 8;
+				} elseif ($inType->name == "Pantry"){
+					$inType = 9;
 				} 
 
 				$newObj = (object) array(
