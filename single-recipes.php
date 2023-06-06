@@ -175,20 +175,22 @@ get_header();
 
 							<span id="mealplan-success"><i>This has been added to your <a href="/planner">mealplan</a></i></span>
 
-							<div id="card-tabs" class="row cols-3">
-								<div class="tab-title tab-ingredients active" data-tab="card-ingredients">
-									<h2 class="caption">Ingredients</h2>
-								</div>
-								<div class="tab-title tab-instructions" data-tab="card-instructions">
-									<h2 class="caption">Instructions</h2>
-								</div>
-								<div class="tab-title tab-nutrition" data-tab="card-nutrition">
-									<h2 class="caption">Nutrition</h2>
-								</div>
-							</div>
+						</div><!-- .site-container -->
 
-							<div class="card-ingredients card-content active">
-								<!-- <h2> Ingredients: </h2> -->
+						<div id="card-tabs" class="row cols-3">
+							<div class="tab-title tab-ingredients active" data-tab="card-ingredients">
+								<h2 class="caption">Ingredients</h2>
+							</div>
+							<div class="tab-title tab-instructions" data-tab="card-instructions">
+								<h2 class="caption">Instructions</h2>
+							</div>
+							<div class="tab-title tab-nutrition" data-tab="card-nutrition">
+								<h2 class="caption">Nutrition</h2>
+							</div>
+						</div>
+
+						<div class="card-ingredients card-content active">
+							<div class="site-container">
 								<table>
 									<?php 
 										$allIngredients = array();
@@ -205,16 +207,13 @@ get_header();
 										}
 									?>
 								</table>
+							</div><!-- .site-container -->
+						</div><!-- .card-ingredients -->
 
-							</div><!-- .card-ingredients -->
-
-							<div class="card-instructions card-content">
-								<!-- <h2> Instructions: </h2> -->
-
+						<div class="card-instructions card-content">
+							<div class="site-container">
 								<?php if( have_rows('instructions') ): ?>
-
 									<ol>
-
 									<?php 
 										$allInstructions = array();
 										$finalInstruction = new stdClass();
@@ -228,21 +227,15 @@ get_header();
 											<li><?php echo $step?></li>
 
 									<?php 
-									
 										endwhile; 
-										
 										?>	
-									
 									</ol>
-
 								<?php endif; ?>
-								
-							</div><!-- .card-instructions -->
+							</div><!-- .site-container -->
+						</div><!-- .card-instructions -->
 
-							<div class="card-nutrition card-content">
-
-								<!-- <h2> Details: </h2> -->
-
+						<div class="card-nutrition card-content">
+							<div class="site-container">
 								<div class="card-meta row cols-1">
 									<div class="col">
 										<?php if (count($cuisineAr) > 0){
@@ -322,10 +315,10 @@ get_header();
 										<?php echo $fiber?>g
 									</div>
 								</div><!-- .nutrition-table -->
-								
-							</div><!-- .card-nutrition -->
+							</div><!-- .site-container -->
+						</div><!-- .card-nutrition -->
 
-						</div><!-- .site-container -->
+						
 					</div><!-- .card-body -->
 			
 	
