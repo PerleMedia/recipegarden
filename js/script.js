@@ -61,7 +61,6 @@ function drop(ev) {
 
   const mealCards = document.querySelectorAll('.meal-card');
   const calorieContainers = document.querySelectorAll('.caloric-sum');
-  // console.log(mealCards);
   
   let recipeData = [];
   let calorieData = [];
@@ -84,7 +83,7 @@ function drop(ev) {
   }
 
   // console.log(mealCards);
-  console.log(calorieData);
+  // console.log(calorieData);
   
 }
 
@@ -92,9 +91,64 @@ function drop(ev) {
  * Functions for recipe filtering logic
  */
 function filterToggle() {
-  let wrapper = document.getElementById('filter-wrapper');
   wrapper.classList.toggle('active');
+  if (wrapper.classList.contains('active')){
+    for (let i = 0; i < filters.length; i++){
+      filters[i].classList.remove('active');
+      filters[i].querySelector('.accordion-expand').innerHTML = '+';
+    } 
+  }
 }
+let ingredientsSelected;
+let caloriesSelected;
+let cuisinesSelected;
+let coursesSelected;
+let dietsSelected;
+let tagsSelected;
+
+let wrapper = document.getElementById('filter-wrapper');
+
+function countFilters() {
+  ingredientsSelected = document.querySelector(`select[id="filter-form"]`).value;
+  if (ingredientsSelected){
+    document.getElementById('ingredients-count').innerHTML = ' (1)';
+  } else document.getElementById('ingredients-count').innerHTML = ''
+
+  let calorieInputs = document.querySelectorAll(`input[type="number"]`);
+  caloriesSelected = [];
+  calorieInputs.forEach(input => {
+    if (input.value){
+      caloriesSelected.push(input);
+    }
+  })
+  if (caloriesSelected.length > 0){
+    document.getElementById('calories-count').innerHTML = ' (' + caloriesSelected.length + ')';
+  } else document.getElementById('calories-count').innerHTML = ''
+
+  cuisinesSelected = document.querySelectorAll(`[data-category="cuisines"].active`).length;
+  if (cuisinesSelected > 0){
+    document.getElementById('cuisines-count').innerHTML = ' (' + cuisinesSelected + ')';
+  } else document.getElementById('cuisines-count').innerHTML = ''
+  
+  coursesSelected = document.querySelectorAll(`[data-category="courses"].active`).length;
+  if (coursesSelected > 0){
+    document.getElementById('courses-count').innerHTML = ' (' + coursesSelected + ')';
+  } else document.getElementById('courses-count').innerHTML = ''
+
+  dietsSelected = document.querySelectorAll(`[data-category="diets"].active`).length;
+  if (dietsSelected > 0){
+    document.getElementById('diets-count').innerHTML = ' (' + dietsSelected + ')';
+  } else document.getElementById('diets-count').innerHTML = ''
+  
+  tagsSelected = document.querySelectorAll(`[data-category="tags"].active`).length;
+  if (tagsSelected > 0){
+    document.getElementById('tags-count').innerHTML = ' (' + tagsSelected + ')';
+  } else document.getElementById('tags-count').innerHTML = ''
+}
+
+
+
+
 
 
 /* 
