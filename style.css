@@ -1059,7 +1059,7 @@ header#header .site-container #site-navigation #menu-toggle::before {
 }
 
 #content.single-recipe .recipe-card .card-body {
-	padding: 10px 0;
+	padding: 10px 0 0;
 }
 
 #content.single-recipe .recipe-card .card-body .card-servings {
@@ -1113,8 +1113,9 @@ header#header .site-container #site-navigation #menu-toggle::before {
 }
 
 #content.single-recipe .recipe-card .card-body #card-tabs .tab-title .caption {
-	padding: 10px 0 15px;
+	padding: 10px 0;
 	margin-bottom: 0;
+	font-size: 10px;
 }
 
 #content.single-recipe .recipe-card .card-body #card-tabs .tab-title.active {
@@ -1129,11 +1130,18 @@ header#header .site-container #site-navigation #menu-toggle::before {
 	display: none;
 	position: relative;
 	z-index: 1;
-	margin-bottom: 30px;
 }
 
 #content.single-recipe .recipe-card .card-body .card-content.active {
 	display: block;
+}
+
+#content.single-recipe .recipe-card .card-body .card-content ol {
+	padding-left: 10px;
+}
+
+#content.single-recipe .recipe-card .card-body .card-content ol li {
+	margin-bottom: 20px;
 }
 
 @media (min-width: 768px) {

@@ -44,7 +44,7 @@
             }
         }
         .card-body{
-            padding:$standard_padding 0;
+            padding:$standard_padding 0 0;
             .card-servings{
                 padding:$standard_padding 0;
                 flex-wrap: nowrap;
@@ -77,8 +77,9 @@
                     border-top-right-radius: $border_radius;
                     position:relative;
                     .caption{
-                        padding: 10px 0 15px;
+                        padding: 10px 0;
                         margin-bottom: 0;
+                        font-size:10px;
                     }
                     &.active{
                         background: white;
@@ -102,10 +103,17 @@
                 position: relative;
                 z-index: 1;
                 // border-radius: $border_radius;
-                margin-bottom: 30px;
                 &.active{
                     display:block
                 }
+                ol{
+                    padding-left: $standard_padding;
+                    li{
+                        margin-bottom: 20px;
+                    }
+                    
+                }
+                
             }
         }
     }
