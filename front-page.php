@@ -348,7 +348,7 @@ get_header();
 				e.preventDefault();
 				if (!conditions){
 					for (let i = 0; i < filters.length; i++){
-						console.log(e.target == filters[i].querySelector('.filter-label'));
+						// console.log(e.target == filters[i].querySelector('.filter-label'));
 						// console.log();
 						filters[i].classList.remove('active');
 						filters[i].querySelector('.accordion-expand').innerHTML = '+';

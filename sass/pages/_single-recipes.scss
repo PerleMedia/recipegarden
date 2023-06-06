@@ -67,6 +67,45 @@
                 display: block;
                 display:none;
             }
+            #card-tabs{
+                flex-wrap:nowrap;
+                text-align: center;
+                margin-top: 30px;
+                .tab-title{
+                    border-top-left-radius: $border_radius;
+                    border-top-right-radius: $border_radius;
+                    position:relative;
+                    .caption{
+                        padding: 10px 0 15px;
+                        margin-bottom: 0;
+                    }
+                    &.active{
+                        background: white;
+                        box-shadow:$box_shadow;
+                        &::after{
+                            content: '';
+                            height: 20px;
+                            width: 100%;
+                            position: absolute;
+                            bottom: -20px;
+                            background: white;
+                            left: 0;
+                        }
+                    }
+                }
+            }
+            .card-content{
+                background: white;
+                padding: 20px 10px;
+                display:none;
+                position: relative;
+                z-index: 1;
+                border-radius: $border_radius;
+                margin-bottom: 30px;
+                &.active{
+                    display:block
+                }
+            }
         }
     }
 

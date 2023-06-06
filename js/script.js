@@ -147,10 +147,6 @@ function countFilters() {
 }
 
 
-
-
-
-
 /* 
  * jQuery
  */

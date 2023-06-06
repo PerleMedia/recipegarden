@@ -175,9 +175,20 @@ get_header();
 
 							<span id="mealplan-success"><i>This has been added to your <a href="/planner">mealplan</a></i></span>
 
-							<div class="card-ingredients">
-								<h2> Ingredients: </h2>
-								
+							<div id="card-tabs" class="row cols-3">
+								<div class="tab-title tab-ingredients active" data-tab="card-ingredients">
+									<h2 class="caption">Ingredients</h2>
+								</div>
+								<div class="tab-title tab-instructions" data-tab="card-instructions">
+									<h2 class="caption">Instructions</h2>
+								</div>
+								<div class="tab-title tab-nutrition" data-tab="card-nutrition">
+									<h2 class="caption">Nutrition</h2>
+								</div>
+							</div>
+
+							<div class="card-ingredients card-content active">
+								<!-- <h2> Ingredients: </h2> -->
 								<table>
 									<?php 
 										$allIngredients = array();
@@ -197,8 +208,8 @@ get_header();
 
 							</div><!-- .card-ingredients -->
 
-							<div class="card-instructions">
-								<h2> Instructions: </h2>
+							<div class="card-instructions card-content">
+								<!-- <h2> Instructions: </h2> -->
 
 								<?php if( have_rows('instructions') ): ?>
 
@@ -228,9 +239,9 @@ get_header();
 								
 							</div><!-- .card-instructions -->
 
-							<div class="card-nutrition">
+							<div class="card-nutrition card-content">
 
-								<h2> Details: </h2>
+								<!-- <h2> Details: </h2> -->
 
 								<div class="card-meta row cols-1">
 									<div class="col">
@@ -369,6 +380,41 @@ get_header();
 
 			document.getElementById('mealplan-success').style.display = "block";
 		})
+
+		// Click tab
+		let tabs = document.querySelectorAll('.tab-title');
+		let tabContent = document.querySelectorAll('.card-content');
+		let activeTab;
+
+		tabs.forEach(tab => {
+			tab.addEventListener('click', function(e){
+				e.preventDefault();
+				let clickedElement;
+				if (!e.target.classList.contains('.tab-title')){
+					clickedElement = e.target.parentNode
+				} else clickedElement = e.target
+				if (!clickedElement.classList.contains('active')){
+					for (let i = 0; i < tabs.length; i++){
+						tabs[i].classList.remove('active');
+					}
+					clickedElement.classList.add('active');
+				}
+
+				activeTab = document.querySelector('.tab-title.active');
+				activeClass = '.' + activeTab.getAttribute('data-tab');
+				console.log(activeClass);
+				console.log(document.querySelector(activeClass));
+
+				for (let i = 0; i < tabContent.length; i++){
+					tabContent[i].classList.remove('active');
+				}
+				document.querySelector(activeClass).classList.add('active');
+
+			})
+		})
+
+		
+		
 	</script>
 
 <script type="application/ld+json">
