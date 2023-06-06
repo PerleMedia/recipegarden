@@ -8,8 +8,7 @@ get_header();
 
 	<main id="content" class="site-main front-page">
 		<div class="site-container">
-			<?php var_dump($_POST)?>
-			
+
 			<form id="filter-form" class="filter-form" autocomplete="off" method='POST'>
 				<div class="tool-wrapper">
 
@@ -209,7 +208,7 @@ get_header();
 				function matchCuisines($posts){
 					function filterByCuisines($recipe){
 						$cuisines = get_the_terms( $recipe->ID, 'recipe-cuisines');
-						if ($_POST['filter-cuisine']){
+						if (isset($_POST['filter-cuisine'])){
 							if ($cuisines){
 								foreach ($cuisines as $category){
 									if (in_array($category->term_id, $_POST['filter-cuisine'])){
