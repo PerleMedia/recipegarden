@@ -71,6 +71,20 @@ get_header();
 			$carbs = $nutrition['carbs'];
 			$fiber = $nutrition['fiber'];
 
+			// Macro Targets & Calculations
+			$macro_cals = get_field('macros_calories', 'options');
+			$macro_carbs = get_field('macros_carbs', 'options');
+			$macro_protein = get_field('macros_protein', 'options');
+			$macro_fats = get_field('macros_fats', 'options');
+			$macro_fiber = get_field('macros_fibre', 'options');
+			$percent_cals = round((($calories / $macro_cals) * 100), 1);
+			$percent_carbs = round((($carbs / $macro_carbs) * 100), 1);
+			$percent_protein = round((($protein / $macro_protein) * 100), 1);
+			$percent_fats = round((($fat / $macro_fats) * 100), 1);
+			$percent_fiber = round((($fiber / $macro_fiber) * 100), 1);
+
+			
+
 			// Create Ingredients Objects
 			$ingredientsObj = get_field('ingredients'); 
 			$ingredientsAr = [];
@@ -315,6 +329,74 @@ get_header();
 										<?php echo $fiber?>g
 									</div>
 								</div><!-- .nutrition-table -->
+
+								
+								<div class="nutrition-charts row cols-5">
+									<div class="macros">
+										<div class="chart-container">
+											<div class="circle">
+												<div class="circle-fill" style="height:<?php echo $percent_cals . '%' ?>">
+													<span class="chart-label"><?php echo "$percent_cals%" ?></span>
+												</div>
+											</div>
+										</div>
+										<div class="chart-title">
+											Calories
+										</div>
+									</div>
+
+									<div class="macros">
+										<div class="chart-container">
+											<div class="circle">
+												<div class="circle-fill" style="height:<?php echo $percent_carbs . '%' ?>">
+													<span class="chart-label"><?php echo "$percent_carbs%" ?></span>
+												</div>
+											</div>
+										</div>
+										<div class="chart-title">
+											Carbs
+										</div>
+									</div>
+
+									<div class="macros">
+										<div class="chart-container">
+											<div class="circle">
+												<div class="circle-fill" style="height:<?php echo $percent_protein . '%' ?>">
+													<span class="chart-label"><?php echo "$percent_protein%" ?></span>
+												</div>
+											</div>
+										</div>
+										<div class="chart-title">
+											Protein
+										</div>
+									</div>
+
+									<div class="macros">
+										<div class="chart-container">
+											<div class="circle">
+												<div class="circle-fill" style="height:<?php echo $percent_fats . '%' ?>">
+													<span class="chart-label"><?php echo "$percent_fats%" ?></span>
+												</div>
+											</div>
+										</div>
+										<div class="chart-title">
+											Fat
+										</div>
+									</div>
+
+									<div class="macros">
+										<div class="chart-container">
+											<div class="circle">
+												<div class="circle-fill" style="height:<?php echo $percent_fiber . '%' ?>">
+													<span class="chart-label"><?php echo "$percent_fiber%" ?></span>
+												</div>
+											</div>
+										</div>
+										<div class="chart-title">
+											Fiber
+										</div>
+									</div>
+								</div><!-- .nutrition-charts -->
 							</div><!-- .site-container -->
 						</div><!-- .card-nutrition -->
 

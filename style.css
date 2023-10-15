@@ -1144,6 +1144,47 @@ header#header .site-container #site-navigation #menu-toggle::before {
 	margin-bottom: 20px;
 }
 
+#content.single-recipe .recipe-card .card-body .card-nutrition .nutrition-charts {
+	-webkit-box-pack: space-evenly;
+	    -ms-flex-pack: space-evenly;
+	        justify-content: space-evenly;
+}
+
+#content.single-recipe .recipe-card .card-body .card-nutrition .nutrition-charts .chart-container {
+	padding-bottom: 100%;
+	position: relative;
+}
+
+#content.single-recipe .recipe-card .card-body .card-nutrition .nutrition-charts .chart-container .circle {
+	background: #d1d8bd;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	border-radius: 100%;
+	overflow: hidden;
+}
+
+#content.single-recipe .recipe-card .card-body .card-nutrition .nutrition-charts .chart-container .circle .circle-fill {
+	width: 100%;
+	background: #777e5c;
+	bottom: 0;
+	position: absolute;
+}
+
+#content.single-recipe .recipe-card .card-body .card-nutrition .nutrition-charts .chart-container .circle .circle-fill .chart-label {
+	position: absolute;
+	text-align: center;
+	width: 100%;
+	font-size: 14px;
+	margin-top: -0.5em;
+	color: #d1d8bd;
+}
+
+#content.single-recipe .recipe-card .card-body .card-nutrition .nutrition-charts .chart-title {
+	text-align: center;
+}
+
 @media (min-width: 768px) {
 	#content.single-recipe .recipe-card .card-header {
 		height: 70vh;

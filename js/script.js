@@ -82,8 +82,6 @@ function drop(ev) {
     calorieContainers[i].innerHTML = calorieData[i];
   }
 
-  // console.log(mealCards);
-  // console.log(calorieData);
   
 }
 

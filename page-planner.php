@@ -129,6 +129,8 @@ get_header();
 
                     <?php 
                     
+                    
+
                     $recipeListIds = $_COOKIE[ 'recipeList' ];
                     $recipeListIds = str_replace(array('[',']'), '', $recipeListIds);
                     $recipeListIds = explode(",", $recipeListIds);
@@ -136,18 +138,21 @@ get_header();
                     $recipeListObjs = [];
                     $recipeImgArr = [];
                     $recipeCalArr = [];
+                    $recipeUrlArr = [];
 
                     foreach ($recipeListIds as $recipe){
                         if ($recipe != 0){
                             $recipeObj = get_post( $recipe );
                             $calories = get_field('calories', $recipeObj->ID);
                             $thumbnail = 'thumbnail';
+                            $url = get_site_url() . '/recipes/' . $recipeObj->post_name;
 
                             add_post_meta( $recipeObj->ID, $thumbnail, get_the_post_thumbnail_url($recipe), TRUE );
 
                             array_push($recipeListObjs, $recipeObj);
                             array_push($recipeImgArr, $recipeObj->$thumbnail);
                             array_push($recipeCalArr, $calories);
+                            array_push($recipeUrlArr, $url);
                         }
                         
                     }
@@ -185,6 +190,7 @@ get_header();
         const recipeListObjs = <?php echo json_encode($recipeListObjs); ?>;
         const recipeImgArr = <?php echo json_encode($recipeImgArr); ?>;
         const recipeCalArr = <?php echo json_encode($recipeCalArr); ?>;
+        const recipeUrlArr = <?php echo json_encode($recipeUrlArr); ?>;
 
         let storedRecipes = JSON.parse(localStorage.getItem('recipeList'));
         const currentDiv = document.getElementById("planner-cards");
@@ -197,7 +203,7 @@ get_header();
             newDiv.setAttribute('draggable', 'true');
             newDiv.setAttribute('ondragstart', 'drag(event)');
             let codeBlock = '<h4>' + recipeListObjs[i].post_title + '</h4>' +
-                            '<div class="img-wrap"><img src="' + recipeImgArr[i] + '"/></div>';
+                            '<div class="img-wrap"><a href="' + recipeUrlArr[i] + '"><img src="' + recipeImgArr[i] + '"/></a></div>';
             newDiv.innerHTML = codeBlock;
             currentDiv.append(newDiv);
         }
