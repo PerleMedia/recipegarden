@@ -825,7 +825,7 @@ header#header .site-container #site-navigation #menu-toggle::before {
 }
 
 #content.front-page .site-container .filter-form #filter-wrapper.active {
-	max-height: 100vh;
+	max-height: 150vh;
 	-webkit-transition: 0.4s ease-in;
 	transition: 0.4s ease-in;
 	margin: 20px 0 20px 0;
@@ -875,7 +875,7 @@ header#header .site-container #site-navigation #menu-toggle::before {
 	display: none;
 }
 
-#content.front-page .site-container .filter-form #filter-wrapper .filter .accordion-content.calories {
+#content.front-page .site-container .filter-form #filter-wrapper .filter .accordion-content.nutrition {
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
@@ -884,7 +884,7 @@ header#header .site-container #site-navigation #menu-toggle::before {
 	        column-gap: 15px;
 }
 
-#content.front-page .site-container .filter-form #filter-wrapper .filter .accordion-content.calories input[type="number"] {
+#content.front-page .site-container .filter-form #filter-wrapper .filter .accordion-content.nutrition input[type="number"] {
 	width: 100%;
 	border: none;
 	padding: 10px;

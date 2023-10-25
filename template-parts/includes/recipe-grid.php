@@ -7,7 +7,6 @@
 
 ?>
 <?php $nutrition = get_field('nutritional_information', $post->ID) ?>
-
 <a class="recipe-card" href="<?php echo get_permalink( $post->ID ) ?>">
     <h3><?php echo $post->post_title; ?></h3>
     <div class="wrapper">

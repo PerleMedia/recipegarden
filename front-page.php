@@ -14,9 +14,7 @@ get_header();
 
 					<div class="search row cols-2"> 
 						<input type="text" id="search-titles" name="search-titles" placeholder="Search..." value="<?php if(isset($_POST['search-titles'])) { echo $_POST['search-titles']; } ?>"></input>
-						<!-- <button id="search-recipes" type="submit" value="search" class="button">
-							<svg id="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 343.05 342.94"><title>search-icon</title><path d="M140.1,280a139.26,139.26,0,0,0,86.36-29.91l92.84,92.85,23.75-23.74L250.2,226.35A140,140,0,1,0,140.1,280Zm0-246.4A106.4,106.4,0,1,1,64.87,64.76,106.41,106.41,0,0,1,140.1,33.6Z"/></svg>
-						</button> -->
+						
 						<span class="button" id="filter-recipes" onclick="filterToggle(), countFilters()">
 							<svg id="filter-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 444.52 378.56"><defs><style>.cls-1{fill:none;}.cls-2{clip-path:url(#clip-path);}</style><clipPath id="clip-path" transform="translate(12.3)"><rect class="cls-1" x="-0.55" width="419.35" height="378.56"/></clipPath></defs><title>filter-icon</title><g class="cls-2"><path d="M62.18,41.44v22.4H-1.09a11.23,11.23,0,0,1-11.2-11.2,11.23,11.23,0,0,1,11.2-11.2Z" transform="translate(12.3)"/><path d="M432.22,52.64A11.23,11.23,0,0,1,421,63.84H127V41.44H421a11.24,11.24,0,0,1,11.21,11.2Z" transform="translate(12.3)"/><path d="M41.46,0V104.72H146.18V0ZM126,84.56H62.18V20.16h64.4v64.4Z" transform="translate(12.3)"/><path d="M265.46,178.08v22.4H-1.1a11.23,11.23,0,0,1-11.2-11.2,11.23,11.23,0,0,1,11.2-11.2Z" transform="translate(12.3)"/><path d="M431.22,189.28a11.23,11.23,0,0,1-11.2,11.2H329.86v-22.4H420A11.23,11.23,0,0,1,431.22,189.28Z" transform="translate(12.3)"/><path d="M244.74,136.64V241.36H349.46V136.64Zm85.12,84.56h-64.4V156.8h64.4Z" transform="translate(12.3)"/><path d="M62.18,314.72v22.4H-1.09a11.23,11.23,0,0,1-11.2-11.2,11.23,11.23,0,0,1,11.2-11.2Z" transform="translate(12.3)"/><path d="M432.22,325.92a11.23,11.23,0,0,1-11.2,11.2H127v-22.4H421a11.24,11.24,0,0,1,11.21,11.2Z" transform="translate(12.3)"/><path d="M41.46,273.84V378.56H146.18V273.84ZM126,358.4H62.18V294h64.4v64.4Z" transform="translate(12.3)"/></g></svg>
 						</span>
@@ -52,14 +50,6 @@ get_header();
 								?>
 							</select>
 						</div>
-					</div>
-
-					<div class="filter">
-						<div class="caption filter-label">By Calories <span id="calories-count" class="filter-count"></span><span class="accordion-expand">&#65291;</span></div>
-						<div class="accordion-content calories"> 
-							<input type="number" class="label-button" name="filter-cals-min" placeholder="Minimum" value="<?php if(isset($_POST['filter-cals-min'])) { echo $_POST['filter-cals-min']; } ?>"></input>
-							<input type="number" class="label-button" name="filter-cals-max" placeholder="Maximum" value="<?php if(isset($_POST['filter-cals-max'])) { echo $_POST['filter-cals-max']; } ?>"></input>
-						</div> 
 					</div>
 
 					
@@ -136,6 +126,35 @@ get_header();
 							?>
 						</div>
 					</div>
+
+					<div class="filter">
+						<div class="caption filter-label">By Nutrition <span id="calories-count" class="filter-count"></span><span class="accordion-expand">&#65291;</span></div>
+						<div class="accordion-content nutrition"> 
+							<input type="number" class="label-button" name="filter-cals-min" placeholder="Min Calories" value="<?php if(isset($_POST['filter-cals-min'])) { echo $_POST['filter-cals-min']; } ?>"></input>
+							<input type="number" class="label-button" name="filter-cals-max" placeholder="Max Calories" value="<?php if(isset($_POST['filter-cals-max'])) { echo $_POST['filter-cals-max']; } ?>"></input>
+						</div> 
+
+						<div class="accordion-content nutrition"> 
+							<input type="number" class="label-button" name="filter-fat-min" placeholder="Min Fat (%)" value="<?php if(isset($_POST['filter-fat-min'])) { echo $_POST['filter-fat-min']; } ?>"></input>
+							<input type="number" class="label-button" name="filter-fat-max" placeholder="Max Fat (%)" value="<?php if(isset($_POST['filter-fat-max'])) { echo $_POST['filter-fat-max']; } ?>"></input>
+						</div> 
+						
+						<div class="accordion-content nutrition"> 
+							<input type="number" class="label-button" name="filter-protein-min" placeholder="Min Protein (%)" value="<?php if(isset($_POST['filter-protein-min'])) { echo $_POST['filter-protein-min']; } ?>"></input>
+							<input type="number" class="label-button" name="filter-protein-max" placeholder="Max Protein (%)" value="<?php if(isset($_POST['filter-protein-max'])) { echo $_POST['filter-protein-max']; } ?>"></input>
+						</div> 
+
+						<div class="accordion-content nutrition"> 
+							<input type="number" class="label-button" name="filter-carbs-min" placeholder="Min Carbs (%)" value="<?php if(isset($_POST['filter-carbs-min'])) { echo $_POST['filter-carbs-min']; } ?>"></input>
+							<input type="number" class="label-button" name="filter-carbs-max" placeholder="Max Carbs (%)" value="<?php if(isset($_POST['filter-carbs-max'])) { echo $_POST['filter-carbs-max']; } ?>"></input>
+						</div> 
+
+						<div class="accordion-content nutrition"> 
+							<input type="number" class="label-button" name="filter-fiber-min" placeholder="Min Fiber (%)" value="<?php if(isset($_POST['filter-fiber-min'])) { echo $_POST['filter-fiber-min']; } ?>"></input>
+							<input type="number" class="label-button" name="filter-fiber-max" placeholder="Max Fiber (%)" value="<?php if(isset($_POST['filter-fiber-max'])) { echo $_POST['filter-fiber-max']; } ?>"></input>
+						</div> 
+						
+					</div>
 					
 				</div><!-- .filter-wrapper -->
 
@@ -154,12 +173,20 @@ get_header();
 				// For sending to JS
 				$search_titles = $_POST['search-titles'];
 				$ingredient = $_POST['filter-ingredient'];
-				$cals_min = $_POST['filter-cals-min'];
-				$cals_max = $_POST['filter-cals-max'];
 				$cuisines = $_POST['filter-cuisine'] ? $_POST['filter-cuisine'] : array();
 				$courses = $_POST['filter-course'] ? $_POST['filter-course'] : array();
 				$diets = $_POST['filter-diet'] ? $_POST['filter-diet'] : array();
 				$tags = $_POST['filter-tag'] ? $_POST['filter-tag'] : array();
+				$cals_min = $_POST['filter-cals-min'];
+				$cals_max = $_POST['filter-cals-max'];
+				$fat_min = $_POST['filter-fat-min'];
+				$fat_max = $_POST['filter-fat-max'];
+				$protein_min = $_POST['filter-protein-min'];
+				$protein_max = $_POST['filter-protein-max'];
+				$carbs_min = $_POST['filter-carbs-min'];
+				$carbs_max = $_POST['filter-carbs-max'];
+				$fiber_min = $_POST['filter-fiber-min'];
+				$fiber_max = $_POST['filter-fiber-max'];
 
 
 				// Filter titles
@@ -189,19 +216,6 @@ get_header();
 						} else return $recipe;
 					}
 					return array_filter($posts, 'filterByIngredient');
-				}
-
-				// Filter calories
-				function matchCalories($posts){
-					function filterByCalories($recipe){	
-						$calories = $recipe->calories;
-						$calories = (int)$calories;
-						$caloriesInputMin = $_POST['filter-cals-min'] ? $_POST['filter-cals-min'] : 0;
-						$caloriesInputMax = $_POST['filter-cals-max'] ? $_POST['filter-cals-max'] : 10000;
-						return $calories >= $caloriesInputMin && $calories <= $caloriesInputMax;
-					}
-
-					return array_filter($posts, 'filterByCalories');
 				}
 
 				// Filter cuisines
@@ -274,16 +288,79 @@ get_header();
 				}
 
 
-				// TEMPLATE
-				// function matchCourses($posts){
-				// 	function filterByCourses($recipe){			
-				// 		return $recipe;		
-				// 	}
+				// Filter calories
+				function matchCalories($posts){
+					function filterByCalories($recipe){	
+						$calories = $recipe->calories;
+						$calories = (int)$calories;
+						$caloriesInputMin = $_POST['filter-cals-min'] ? $_POST['filter-cals-min'] : 0;
+						$caloriesInputMax = $_POST['filter-cals-max'] ? $_POST['filter-cals-max'] : 10000;
+						return $calories >= $caloriesInputMin && $calories <= $caloriesInputMax;
+					}
 
-				// 	var_dump(array_filter($posts, 'filterByCourses'));
-				// 	// return $posts;
+					return array_filter($posts, 'filterByCalories');
+				}
 
-				// }
+				// Filter fat
+				function matchFat($posts){
+					function filterByFat($recipe){	
+						$nutrition = get_field('nutritional_information', $recipe->ID);
+						$recipe_fat = (float)$nutrition['fat'];
+						$macro_fats = (int)get_field('macros_fats', 'options');
+						$percent_fats = round((($recipe_fat / $macro_fats) * 100), 1);
+						$fatInputMin = $_POST['filter-fat-min'] ? $_POST['filter-fat-min'] : 0;
+						$fatInputMax = $_POST['filter-fat-max'] ? $_POST['filter-fat-max'] : 100;
+						return $percent_fats >= $fatInputMin && $percent_fats <= $fatInputMax;
+					}
+
+					return array_filter($posts, 'filterByFat');
+				}
+
+				// Filter protein
+				function matchProtein($posts){
+					function filterByProtein($recipe){	
+						$nutrition = get_field('nutritional_information', $recipe->ID);
+						$recipe_protein = (float)$nutrition['protein'];
+						$macro_proteins = (int)get_field('macros_protein', 'options');
+						$percent_proteins = round((($recipe_protein / $macro_proteins) * 100), 1);
+						$proteinInputMin = $_POST['filter-protein-min'] ? $_POST['filter-protein-min'] : 0;
+						$proteinInputMax = $_POST['filter-protein-max'] ? $_POST['filter-protein-max'] : 100;
+						return $percent_proteins >= $proteinInputMin && $percent_proteins <= $proteinInputMax;
+					}
+
+					return array_filter($posts, 'filterByProtein');
+				}
+
+				// Filter carbs
+				function matchCarbs($posts){
+					function filterByCarbs($recipe){	
+						$nutrition = get_field('nutritional_information', $recipe->ID);
+						$recipe_carbs = (float)$nutrition['carbs'];
+						$macro_carbs = (int)get_field('macros_carbs', 'options');
+						$percent_carbs = round((($recipe_carbs / $macro_carbs) * 100), 1);
+						$carbsInputMin = $_POST['filter-carbs-min'] ? $_POST['filter-carbs-min'] : 0;
+						$carbsInputMax = $_POST['filter-carbs-max'] ? $_POST['filter-carbs-max'] : 100;
+						return $percent_carbs >= $carbsInputMin && $percent_carbs <= $carbsInputMax;
+					}
+
+					return array_filter($posts, 'filterByCarbs');
+				}
+
+				// Filter fiber
+				function matchFiber($posts){
+					function filterByFiber($recipe){	
+						$nutrition = get_field('nutritional_information', $recipe->ID);
+						$recipe_fiber = (float)$nutrition['fiber'];
+						$macro_fiber = (int)get_field('macros_fibre', 'options');
+						$percent_fiber = round((($recipe_fiber / $macro_fiber) * 100), 1);
+						$fiberInputMin = $_POST['filter-fiber-min'] ? $_POST['filter-fiber-min'] : 0;
+						$fiberInputMax = $_POST['filter-fiber-max'] ? $_POST['filter-fiber-max'] : 100;
+						return $percent_fiber >= $fiberInputMin && $percent_fiber <= $fiberInputMax;
+					}
+
+					return array_filter($posts, 'filterByFiber');
+				}
+
 
 				$filterOne = matchName($posts);
 				$filterTwo = matchCalories($filterOne);
@@ -292,8 +369,12 @@ get_header();
 				$filterFive = matchDiets($filterFour);
 				$filterSix = matchTags($filterFive);
 				$filterSeven = matchIngredient($filterSix);
+				$filterEight = matchFat($filterSeven);
+				$filterNine = matchProtein($filterEight);
+				$filterTen = matchCarbs($filterNine);
+				$filterEleven = matchFiber($filterTen);
 
-				$filteredPosts = $filterSeven;
+				$filteredPosts = $filterEleven;
 
 				// var_dump($filteredPosts);
 				
@@ -301,7 +382,7 @@ get_header();
 					foreach ($filteredPosts as $post){
 						include('template-parts/includes/recipe-grid.php');
 					}
-				} else echo 'no posts!'
+				} else echo 'No posts matched the search criteria.'
 
 				?>
 			</div>
