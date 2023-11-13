@@ -27,8 +27,8 @@ get_header();
                             <div id="total-calories">
                                 <span class="day">Sunday</span>
                                 <section>Calories: <div class="caloric-sum"></div></section>
-                                <!-- <section>Fat: <div id="fat-sum-1"></div></section>
-                                <section>Protein: <div id="protein-sum-1"></div></section> -->
+                                <section>Fat: <div class="fat-sum"></div></section>
+                                <section>Protein: <div class="protein-sum"></div></section>
                             </div>
                             <div id="lunch" ondrop="drop(event)" ondragover="allowDrop(event)">
                             </div>
@@ -41,9 +41,8 @@ get_header();
                             <div id="total-calories">
                                 <span class="day">Monday</span>
                                 <section>Calories: <div class="caloric-sum"></div></section>
-                                <!-- <section>Calories: <div id="caloric-sum-2"></div></section> -->
-                                <!-- <section>Fat: <div id="fat-sum-2"></div></section>
-                                <section>Protein: <div id="protein-sum-2"></div></section> -->
+                                <section>Fat: <div class="fat-sum"></div></section>
+                                <section>Protein: <div class="protein-sum"></div></section>
                             </div>
                             <div id="lunch" ondrop="drop(event)" ondragover="allowDrop(event)">
                             </div>
@@ -56,9 +55,8 @@ get_header();
                             <div id="total-calories">
                                 <span class="day">Tuesday</span>
                                 <section>Calories: <div class="caloric-sum"></div></section>
-                                <!-- <section>Calories: <div id="caloric-sum-3"></div></section> -->
-                                <!-- <section>Fat: <div id="fat-sum-3"></div></section>
-                                <section>Protein: <div id="protein-sum-3"></div></section> -->
+                                <section>Fat: <div class="fat-sum"></div></section>
+                                <section>Protein: <div class="protein-sum"></div></section>
                             </div>
                             <div id="lunch" ondrop="drop(event)" ondragover="allowDrop(event)">
                             </div>
@@ -70,9 +68,8 @@ get_header();
                             <div id="total-calories">
                                 <span class="day">Wednesday</span>
                                 <section>Calories: <div class="caloric-sum"></div></section>
-                                <!-- <section>Calories: <div id="caloric-sum-3"></div></section> -->
-                                <!-- <section>Fat: <div id="fat-sum-3"></div></section>
-                                <section>Protein: <div id="protein-sum-3"></div></section> -->
+                                <section>Fat: <div class="fat-sum"></div></section>
+                                <section>Protein: <div class="protein-sum"></div></section>
                             </div>
                             <div id="lunch" ondrop="drop(event)" ondragover="allowDrop(event)">
                             </div>
@@ -84,9 +81,8 @@ get_header();
                             <div id="total-calories">
                                 <span class="day">Thursday</span>
                                 <section>Calories: <div class="caloric-sum"></div></section>
-                                <!-- <section>Calories: <div id="caloric-sum-3"></div></section> -->
-                                <!-- <section>Fat: <div id="fat-sum-3"></div></section>
-                                <section>Protein: <div id="protein-sum-3"></div></section> -->
+                                <section>Fat: <div class="fat-sum"></div></section>
+                                <section>Protein: <div class="protein-sum"></div></section>
                             </div>
                             <div id="lunch" ondrop="drop(event)" ondragover="allowDrop(event)">
                             </div>
@@ -98,9 +94,8 @@ get_header();
                             <div id="total-calories">
                                 <span class="day">Friday</span>
                                 <section>Calories: <div class="caloric-sum"></div></section>
-                                <!-- <section>Calories: <div id="caloric-sum-3"></div></section> -->
-                                <!-- <section>Fat: <div id="fat-sum-3"></div></section>
-                                <section>Protein: <div id="protein-sum-3"></div></section> -->
+                                <section>Fat: <div class="fat-sum"></div></section>
+                                <section>Protein: <div class="protein-sum"></div></section>
                             </div>
                             <div id="lunch" ondrop="drop(event)" ondragover="allowDrop(event)">
                             </div>
@@ -112,9 +107,8 @@ get_header();
                             <div id="total-calories">
                                 <span class="day">Saturday</span>
                                 <section>Calories: <div class="caloric-sum"></div></section>
-                                <!-- <section>Calories: <div id="caloric-sum-3"></div></section> -->
-                                <!-- <section>Fat: <div id="fat-sum-3"></div></section>
-                                <section>Protein: <div id="protein-sum-3"></div></section> -->
+                                <section>Fat: <div class="fat-sum"></div></section>
+                                <section>Protein: <div class="protein-sum"></div></section>
                             </div>
                             <div id="lunch" ondrop="drop(event)" ondragover="allowDrop(event)">
                             </div>
@@ -138,12 +132,20 @@ get_header();
                     $recipeListObjs = [];
                     $recipeImgArr = [];
                     $recipeCalArr = [];
+                    $recipeFatArr = [];
+                    $recipeProArr = [];
                     $recipeUrlArr = [];
+
+                    $macro_fats = (int)get_field('macros_fats', 'options');
+                    $macro_protein = (int)get_field('macros_protein', 'options');
 
                     foreach ($recipeListIds as $recipe){
                         if ($recipe != 0){
                             $recipeObj = get_post( $recipe );
+                            $nutrition = get_field('nutritional_information', $recipeObj->ID);
                             $calories = get_field('calories', $recipeObj->ID);
+                            $fat = round((($nutrition['fat'] / $macro_fats) * 100), 1);
+                            $protein = round((($nutrition['protein'] / $macro_protein) * 100), 1);
                             $thumbnail = 'thumbnail';
                             $url = get_site_url() . '/recipes/' . $recipeObj->post_name;
 
@@ -152,7 +154,10 @@ get_header();
                             array_push($recipeListObjs, $recipeObj);
                             array_push($recipeImgArr, $recipeObj->$thumbnail);
                             array_push($recipeCalArr, $calories);
-                            array_push($recipeUrlArr, $url);
+                            array_push($recipeFatArr, $fat);
+                            array_push($recipeProArr, $protein);
+                            array_push($recipeUrlArr, $url);      
+                            
                         }
                         
                     }
@@ -190,6 +195,8 @@ get_header();
         const recipeListObjs = <?php echo json_encode($recipeListObjs); ?>;
         const recipeImgArr = <?php echo json_encode($recipeImgArr); ?>;
         const recipeCalArr = <?php echo json_encode($recipeCalArr); ?>;
+        const recipeFatArr = <?php echo json_encode($recipeFatArr); ?>;
+        const recipeProArr = <?php echo json_encode($recipeProArr); ?>;
         const recipeUrlArr = <?php echo json_encode($recipeUrlArr); ?>;
 
         let storedRecipes = JSON.parse(localStorage.getItem('recipeList'));
@@ -200,6 +207,8 @@ get_header();
             newDiv.classList.add('recipe-card');
             newDiv.setAttribute('id', `${recipeListObjs[i].ID}-${i}`);
             newDiv.setAttribute('data-calories', `${recipeCalArr[i]}`);
+            newDiv.setAttribute('data-fat', `${recipeFatArr[i]}`);
+            newDiv.setAttribute('data-protein', `${recipeProArr[i]}`);
             newDiv.setAttribute('draggable', 'true');
             newDiv.setAttribute('ondragstart', 'drag(event)');
             let codeBlock = '<h4>' + recipeListObjs[i].post_title + '</h4>' +

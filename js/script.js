@@ -61,9 +61,13 @@ function drop(ev) {
 
   const mealCards = document.querySelectorAll('.meal-card');
   const calorieContainers = document.querySelectorAll('.caloric-sum');
-  
+  const fatContainers = document.querySelectorAll('.fat-sum');
+  const proteinContainers = document.querySelectorAll('.protein-sum');
+
   let recipeData = [];
   let calorieData = [];
+  let fatData = [];
+  let proteinData = [];
   
   for (let i = 0; i < mealCards.length; i++){
     recipeData[i] = mealCards[i].querySelectorAll('.recipe-card');
@@ -72,14 +76,36 @@ function drop(ev) {
     let totalCals;
     recipeData[i].forEach(recipe => {
      calArr.push(parseInt(recipe.dataset['calories']))
-    })
-  
+    })  
     totalCals = calArr.reduce((a, b) => {
         return a + b;
     })
-  
     calorieData.push(totalCals);
     calorieContainers[i].innerHTML = calorieData[i];
+
+    let fatArr = [0];
+    let totalFats;
+    recipeData[i].forEach(recipe => {
+     fatArr.push(parseInt(recipe.dataset['fat']))
+    })  
+    totalFats = fatArr.reduce((a, b) => {
+        return a + b;
+    })
+    fatData.push(totalFats);
+    fatContainers[i].innerHTML = fatData[i] + '%';
+
+    let proArr = [0];
+    let totalPros;
+    recipeData[i].forEach(recipe => {
+     proArr.push(parseInt(recipe.dataset['protein']))
+    })  
+    totalPros = proArr.reduce((a, b) => {
+        return a + b;
+    })
+    proteinData.push(totalPros);
+    proteinContainers[i].innerHTML = proteinData[i] + '%';
+
+    
   }
 
   

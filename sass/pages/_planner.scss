@@ -28,7 +28,9 @@
             overflow:scroll;
             .meal-card{
                 width: 100%;
-                .caloric-sum{
+                .caloric-sum,
+                .fat-sum,
+                .protein-sum{
                     display:inline;
                 }
                 #lunch,

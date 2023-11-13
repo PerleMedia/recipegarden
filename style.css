@@ -1267,7 +1267,9 @@ header#header .site-container #site-navigation #menu-toggle::before {
 	width: 100%;
 }
 
-#content.page-planner .plan-wrapper #plan-container .meal-card .caloric-sum {
+#content.page-planner .plan-wrapper #plan-container .meal-card .caloric-sum,
+#content.page-planner .plan-wrapper #plan-container .meal-card .fat-sum,
+#content.page-planner .plan-wrapper #plan-container .meal-card .protein-sum {
 	display: inline;
 }
 
