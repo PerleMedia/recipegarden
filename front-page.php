@@ -309,7 +309,7 @@ get_header();
 						$macro_fats = (int)get_field('macros_fats', 'options');
 						$percent_fats = round((($recipe_fat / $macro_fats) * 100), 1);
 						$fatInputMin = $_POST['filter-fat-min'] ? $_POST['filter-fat-min'] : 0;
-						$fatInputMax = $_POST['filter-fat-max'] ? $_POST['filter-fat-max'] : 100;
+						$fatInputMax = $_POST['filter-fat-max'] ? $_POST['filter-fat-max'] : 1000;
 						return $percent_fats >= $fatInputMin && $percent_fats <= $fatInputMax;
 					}
 
@@ -324,7 +324,7 @@ get_header();
 						$macro_proteins = (int)get_field('macros_protein', 'options');
 						$percent_proteins = round((($recipe_protein / $macro_proteins) * 100), 1);
 						$proteinInputMin = $_POST['filter-protein-min'] ? $_POST['filter-protein-min'] : 0;
-						$proteinInputMax = $_POST['filter-protein-max'] ? $_POST['filter-protein-max'] : 100;
+						$proteinInputMax = $_POST['filter-protein-max'] ? $_POST['filter-protein-max'] : 1000;
 						return $percent_proteins >= $proteinInputMin && $percent_proteins <= $proteinInputMax;
 					}
 
@@ -339,7 +339,7 @@ get_header();
 						$macro_carbs = (int)get_field('macros_carbs', 'options');
 						$percent_carbs = round((($recipe_carbs / $macro_carbs) * 100), 1);
 						$carbsInputMin = $_POST['filter-carbs-min'] ? $_POST['filter-carbs-min'] : 0;
-						$carbsInputMax = $_POST['filter-carbs-max'] ? $_POST['filter-carbs-max'] : 100;
+						$carbsInputMax = $_POST['filter-carbs-max'] ? $_POST['filter-carbs-max'] : 1000;
 						return $percent_carbs >= $carbsInputMin && $percent_carbs <= $carbsInputMax;
 					}
 
@@ -354,7 +354,7 @@ get_header();
 						$macro_fiber = (int)get_field('macros_fibre', 'options');
 						$percent_fiber = round((($recipe_fiber / $macro_fiber) * 100), 1);
 						$fiberInputMin = $_POST['filter-fiber-min'] ? $_POST['filter-fiber-min'] : 0;
-						$fiberInputMax = $_POST['filter-fiber-max'] ? $_POST['filter-fiber-max'] : 100;
+						$fiberInputMax = $_POST['filter-fiber-max'] ? $_POST['filter-fiber-max'] : 1000;
 						return $percent_fiber >= $fiberInputMin && $percent_fiber <= $fiberInputMax;
 					}
 
