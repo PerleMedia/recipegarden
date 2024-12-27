@@ -199,10 +199,10 @@ get_header();
                 });
 
                 foreach ($recipeIngArr as $printedRecipe){
-                    echo '<div>';
+                    
                     echo round($printedRecipe->quantity,1) . ' ' . $printedRecipe->measurement . ' ' . $printedRecipe->name;
                     // var_dump($printedRecipe);
-                    echo '</div>';
+                    echo '<br/>';
                 }
 
                 
