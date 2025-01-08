@@ -10,7 +10,7 @@ get_header();
 		<div class="site-container">
 
 		    <button id="clear-storage">Reset Meal Plan</button>
-            <div id="card-wrapper"></div>
+            <div id="card-wrapper">
 
             <?php
             while ( have_posts() ) :
@@ -209,6 +209,11 @@ get_header();
 
             endwhile; 
             ?>
+            </div>
+
+            <button id="print_to_pdf" class="button">testing</button>
+
+            
 		</div><!-- .site-container -->
 	</main><!-- #content -->
 
@@ -229,6 +234,15 @@ get_header();
         ////
         const recipeIngArr = <?php echo json_encode($recipeIngArr); ?>;
         console.log(recipeIngArr)
+
+        //
+        
+        document.getElementById('print_to_pdf').onclick = function () {
+            var doc = new jsPDF()
+            var source = document.getElementById('card-wrapper')
+            doc.fromHTML(source, 15, 15, { width: 180 })
+            doc.save('shopping-list.pdf')
+        }
     </script>
 <?php
 get_footer();
