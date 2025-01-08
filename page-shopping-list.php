@@ -238,11 +238,10 @@ get_header();
         //
         
         document.getElementById('print_to_pdf').onclick = function () {
-            var doc = new jsPDF()
-            var source = document.getElementById('card-wrapper')
-            doc.fromHTML(source, 15, 15, { width: 180 })
-            doc.save('shopping-list.pdf')
+            let shoppingList = document.getElementById('card-wrapper');
+            navigator.clipboard.writeText(shoppingList)
         }
+
     </script>
 <?php
 get_footer();
