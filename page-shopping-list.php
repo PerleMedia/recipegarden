@@ -238,8 +238,25 @@ get_header();
         //
         
         document.getElementById('copy-to-clipboard').onclick = function () {
-            let shoppingList = document.getElementById('card-wrapper');
-            navigator.clipboard.writeText(shoppingList.innerHTML.replace('<br>','\n'));
+            // let shoppingList = document.getElementById('card-wrapper').innerHTML;
+            // let replaced = shoppingList.replace('<br>',"\n")
+            // console.log(replaced)
+            // navigator.clipboard.writeText(shoppingList.innerHTML.replace('<br>','\n'));
+
+            const richTextDiv = document.getElementById("card-wrapper");
+
+            const clipboardItem = new ClipboardItem({
+                "text/plain": new Blob(
+                    [richTextDiv.innerText],
+                    { type: "text/plain" }
+                ),
+                "text/html": new Blob(
+                    [richTextDiv.innerHTML],
+                    { type: "text/html" }
+                ),
+            });
+
+            navigator.clipboard.write([clipboardItem]);
         }
 
     </script>
