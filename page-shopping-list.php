@@ -239,7 +239,7 @@ get_header();
         
         document.getElementById('print_to_pdf').onclick = function () {
             let shoppingList = document.getElementById('card-wrapper');
-            navigator.clipboard.writeText(shoppingList.innerHTML)
+            navigator.clipboard.writeText(shoppingList.value)
         }
 
     </script>
