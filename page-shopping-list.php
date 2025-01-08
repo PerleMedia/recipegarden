@@ -211,7 +211,7 @@ get_header();
             ?>
             </div>
 
-            <button id="print_to_pdf" class="button">testing</button>
+            <button id="copy-to-clipboard" class="button">Copy Shopping List</button>
 
             
 		</div><!-- .site-container -->
@@ -237,9 +237,9 @@ get_header();
 
         //
         
-        document.getElementById('print_to_pdf').onclick = function () {
+        document.getElementById('copy-to-clipboard').onclick = function () {
             let shoppingList = document.getElementById('card-wrapper');
-            navigator.clipboard.writeText(shoppingList.value)
+            navigator.clipboard.writeText(shoppingList.innerHTML.replace('<br>','\n'));
         }
 
     </script>
